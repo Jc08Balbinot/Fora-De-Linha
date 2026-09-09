@@ -17,10 +17,6 @@
 
     <style>
 
-        /* =========================
-           CONFIGURAÇÕES GERAIS
-        ========================== */
-
         * {
             margin: 0;
             padding: 0;
@@ -429,21 +425,24 @@
 
 
         /* =========================
-           MATÉRIAS DE CLUBES
+           MATÉRIAS DE CLUBES E SELEÇÕES
         ========================== */
 
-        .club-articles {
+        .club-articles,
+        .selection-articles {
             background: #101010;
             border-bottom: 1px solid #202020;
         }
 
-        .club-article-grid {
+        .club-article-grid,
+        .selection-article-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 25px;
         }
 
-        .club-article-card {
+        .club-article-card,
+        .selection-article-card {
             background: #181818;
             border: 1px solid #292929;
             border-radius: 10px;
@@ -452,14 +451,21 @@
             transition: 0.3s;
         }
 
-        .club-article-card:hover {
+        .club-article-card:hover,
+        .selection-article-card:hover {
             border-color: #39d353;
             transform: translateY(-4px);
         }
 
-        .club-article-image {
+        .club-article-image,
+        .selection-article-image {
             height: 260px;
 
+            background-position: center;
+            background-size: cover;
+        }
+
+        .club-article-image {
             background:
                 linear-gradient(
                     rgba(0,0,0,0.10),
@@ -469,17 +475,30 @@
                 center/cover;
         }
 
-        .club-article-content {
+        .selection-article-image {
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.10),
+                    rgba(0,0,0,0.45)
+                ),
+                url("imagens/cbf-1982.jpg")
+                center/cover;
+        }
+
+        .club-article-content,
+        .selection-article-content {
             padding: 30px;
         }
 
-        .club-article-content h3 {
+        .club-article-content h3,
+        .selection-article-content h3 {
             font-size: 24px;
             line-height: 1.2;
             margin-bottom: 15px;
         }
 
-        .club-article-content p {
+        .club-article-content p,
+        .selection-article-content p {
             color: #999999;
             margin-bottom: 22px;
         }
@@ -605,7 +624,8 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .club-article-grid {
+            .club-article-grid,
+            .selection-article-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -648,11 +668,13 @@
                 padding: 30px 25px;
             }
 
-            .club-article-content {
+            .club-article-content,
+            .selection-article-content {
                 padding: 25px;
             }
 
-            .club-article-content h3 {
+            .club-article-content h3,
+            .selection-article-content h3 {
                 font-size: 21px;
             }
 
@@ -832,8 +854,6 @@
         </div>
 
 
-        <!-- LADO DIREITO -->
-
         <aside>
 
             <div class="section-title">
@@ -925,7 +945,7 @@
 
             <!-- SELEÇÕES -->
 
-            <a href="#selecoes" class="category-card" id="selecoes">
+            <a href="#selecoes" class="category-card">
 
                 <div class="category-icon">
                     🌎
@@ -1042,6 +1062,78 @@
 
 
 <!-- =========================
+     MATÉRIAS DE SELEÇÕES
+========================== -->
+
+<section class="selection-articles" id="selecoes">
+
+    <div class="main-container">
+
+        <div class="section-title">
+
+            <div class="green-line"></div>
+
+            <h2>
+                Seleções
+            </h2>
+
+        </div>
+
+
+        <div class="selection-article-grid">
+
+
+            <!-- MATÉRIA CBF / IBC -->
+
+            <a href="como-cbf-burlou-fifa.html"
+               class="selection-article-card">
+
+                <div class="selection-article-image"></div>
+
+                <div class="selection-article-content">
+
+                    <span class="category">
+                        Seleções
+                    </span>
+
+                    <h3>
+                        Como a CBF burlou a FIFA com seu escudo…
+                    </h3>
+
+                    <p>
+                        Na Copa de 1982, a Seleção Brasileira encontrou
+                        uma maneira curiosa de colocar um patrocinador
+                        dentro do próprio escudo.
+                    </p>
+
+                    <span class="read-more">
+                        Ler matéria →
+                    </span>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ÁREAS FUTURAS
+========================== -->
+
+<section id="jogadores" style="display:none;"></section>
+
+<section id="torcidas" style="display:none;"></section>
+
+<section id="treinadores" style="display:none;"></section>
+
+
+<!-- =========================
      SOBRE O PROJETO
 ========================== -->
 
@@ -1115,5 +1207,3 @@
 
 
 </body>
-
-</html>
