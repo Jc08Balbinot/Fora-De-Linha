@@ -8,6 +8,10 @@
 
     <meta name="description" content="A história por trás da famosa relação entre Peñarol e Paysandu e da frase 'Até o Peñarol veio aqui pra padecer'.">
 
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
     <style>
 
         * {
@@ -97,7 +101,19 @@
         .subtitle {
             color: #aaa;
             font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        /* VISUALIZAÇÕES */
+
+        .views {
+            color: #777;
+            font-size: 14px;
             margin-bottom: 35px;
+        }
+
+        .views span {
+            color: #aaa;
         }
 
         .hero-image {
@@ -308,6 +324,15 @@
         carregando uma sequência de 15 jogos de invencibilidade. O que aconteceu
         na Curuzu virou história — e até música.
     </p>
+
+
+    <!-- CONTADOR DE VISUALIZAÇÕES -->
+
+    <div class="views">
+        👁️ <span id="contador-visualizacoes">
+            Carregando visualizações...
+        </span>
+    </div>
 
 
     <figure>
@@ -573,6 +598,104 @@
     </p>
 
 </footer>
+
+
+<!-- FIREBASE + CONTADOR DE VISUALIZAÇÕES -->
+
+<script>
+
+    // CONFIGURAÇÃO DO FIREBASE
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDb86GnOJRINq7y5MEi-fwkFzZViswVCtw",
+        authDomain: "fora-de-linha.firebaseapp.com",
+        projectId: "fora-de-linha",
+        storageBucket: "fora-de-linha.firebasestorage.app",
+        messagingSenderId: "843010439814",
+        appId: "1:843010439814:web:89a32a2fc63b7746d7af07",
+        measurementId: "G-ZBY5GP2RF9"
+    };
+
+
+    // INICIALIZA O FIREBASE
+
+    firebase.initializeApp(firebaseConfig);
+
+    const db = firebase.firestore();
+
+
+    // ID DESTA MATÉRIA
+
+    const materiaId = "paysandu-penarol-1965";
+
+
+    // REFERÊNCIA DO DOCUMENTO
+
+    const materiaRef = db
+        .collection("materias")
+        .doc(materiaId);
+
+
+    // REGISTRA UMA VISUALIZAÇÃO
+
+    materiaRef.set({
+
+        titulo: "A relação que você não conhece entre Peñarol e Paysandu",
+
+        categoria: "Clubes",
+
+        visualizacoes:
+            firebase.firestore.FieldValue.increment(1)
+
+    }, {
+
+        merge: true
+
+    })
+
+    .then(() => {
+
+        // BUSCA O NÚMERO ATUAL
+
+        return materiaRef.get();
+
+    })
+
+    .then((doc) => {
+
+        if (doc.exists) {
+
+            const dados = doc.data();
+
+            const visualizacoes =
+                dados.visualizacoes || 0;
+
+
+            document.getElementById(
+                "contador-visualizacoes"
+            ).textContent =
+                visualizacoes + " visualizações";
+
+        }
+
+    })
+
+    .catch((erro) => {
+
+        console.error(
+            "Erro ao registrar visualização:",
+            erro
+        );
+
+        document.getElementById(
+            "contador-visualizacoes"
+        ).textContent =
+            "Visualizações indisponíveis";
+
+    });
+
+</script>
+
 
 </body>
 </html>
