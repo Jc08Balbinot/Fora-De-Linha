@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
@@ -8,12 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Fora de Linha | Curiosidades do Futebol</title>
-
-    <meta
-        name="description"
-        content="Fora de Linha — curiosidades, histórias e fatos do futebol que você provavelmente nunca ouviu."
-    >
+    <title>Como a CBF burlou a FIFA com seu escudo... | Fora de Linha</title>
 
     <style>
 
@@ -23,659 +18,259 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #101010;
-            color: #eeeeee;
-            line-height: 1.6;
+            background: #0b0b0b;
+            color: #ffffff;
+            line-height: 1.7;
         }
 
         a {
-            color: inherit;
             text-decoration: none;
+            color: inherit;
         }
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-
-        /* =========================
-           CABEÇALHO
-        ========================== */
+        /* HEADER */
 
         header {
-            background: #0a0a0a;
-            border-bottom: 1px solid #252525;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: #0d0d0d;
+            border-bottom: 1px solid #222222;
+            padding: 22px 0;
         }
 
         .header-container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: auto;
-            min-height: 78px;
             padding: 0 25px;
 
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
-
-        /* LOGO */
-
         .logo {
-            font-size: 28px;
+            font-size: 25px;
             font-weight: 900;
             letter-spacing: 2px;
-            color: #ffffff;
         }
 
         .logo span {
             color: #39d353;
         }
 
-
-        /* MENU */
-
         nav {
             display: flex;
+            gap: 25px;
             align-items: center;
-            gap: 32px;
         }
 
         nav a {
-            color: #bdbdbd;
-            font-size: 15px;
+            color: #cccccc;
+            font-size: 14px;
             font-weight: 600;
             transition: 0.25s;
         }
 
-        nav a:hover,
-        nav a.active {
+        nav a:hover {
             color: #39d353;
         }
 
+        /* ARTICLE */
 
-        /* MENU CURIOSIDADES */
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown > a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .arrow {
-            font-size: 11px;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 32px;
-            left: 50%;
-            transform: translateX(-50%);
-
-            width: 190px;
-            padding: 8px;
-
-            background: #151515;
-            border: 1px solid #292929;
-            border-radius: 8px;
-
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.2s;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 10px 12px;
-            border-radius: 5px;
-        }
-
-        .dropdown-menu a:hover {
-            background: #202020;
-            color: #39d353;
-        }
-
-
-        /* =========================
-           HERO / DESTAQUE
-        ========================== */
-
-        .hero {
-            background:
-                linear-gradient(
-                    90deg,
-                    #0b0b0b 0%,
-                    #111111 50%,
-                    #151515 100%
-                );
-
-            border-bottom: 1px solid #242424;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 75px 25px 85px;
-        }
-
-        .hero-label {
-            color: #39d353;
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            max-width: 800px;
-            font-size: clamp(38px, 6vw, 72px);
-            line-height: 1.05;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            margin-bottom: 20px;
-        }
-
-        .hero-description {
-            max-width: 620px;
-            color: #999999;
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-
-
-        /* =========================
-           MATÉRIA PRINCIPAL
-        ========================== */
-
-        .featured {
-            max-width: 1200px;
-            margin: -35px auto 0;
+        .article-container {
+            max-width: 900px;
+            margin: 70px auto;
             padding: 0 25px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .featured-card {
-            background: #181818;
-            border: 1px solid #292929;
-            border-radius: 12px;
-            overflow: hidden;
-
-            display: grid;
-            grid-template-columns: 1.3fr 1fr;
-
-            transition: 0.3s;
-        }
-
-        .featured-card:hover {
-            border-color: #39d353;
-            transform: translateY(-3px);
-        }
-
-        .featured-image {
-            min-height: 420px;
-
-            background:
-                linear-gradient(
-                    rgba(0,0,0,0.15),
-                    rgba(0,0,0,0.55)
-                ),
-                url("imagens/paysandu-penarol-1965.jpg")
-                center/cover;
-        }
-
-        .featured-content {
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .category {
             display: inline-block;
-            width: fit-content;
+
             color: #39d353;
-            font-size: 12px;
+
+            font-size: 13px;
             font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 18px;
-        }
 
-        .featured-content h2 {
-            font-size: 34px;
-            line-height: 1.15;
-            margin-bottom: 18px;
-        }
-
-        .featured-content p {
-            color: #999999;
-            margin-bottom: 28px;
-        }
-
-        .read-more {
-            width: fit-content;
-            padding: 11px 20px;
-
-            border: 1px solid #39d353;
-            border-radius: 5px;
-
-            color: #39d353;
-            font-weight: 700;
-            font-size: 14px;
-
-            transition: 0.25s;
-        }
-
-        .read-more:hover {
-            background: #39d353;
-            color: #071007;
-        }
-
-
-        /* =========================
-           CONTEÚDO PRINCIPAL
-        ========================== */
-
-        .main-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 75px 25px;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-
-            margin-bottom: 30px;
-        }
-
-        .section-title h2 {
-            font-size: 27px;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
 
-        .section-title::after {
-            content: "";
-            height: 2px;
-            flex: 1;
-            background: #282828;
-        }
-
-        .green-line {
-            width: 35px;
-            height: 4px;
-            background: #39d353;
-            border-radius: 5px;
-        }
-
-
-        /* =========================
-           MAIS LIDAS
-        ========================== */
-
-        .popular {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 50px;
-        }
-
-        .popular-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .coming-soon {
-            padding: 45px 20px;
-            background: #151515;
-            border: 1px solid #292929;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .coming-soon-icon {
-            font-size: 35px;
             margin-bottom: 15px;
         }
 
-        .coming-soon h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
+        .article-title {
+            font-size: 48px;
+            line-height: 1.12;
+
+            margin-bottom: 25px;
         }
 
-        .coming-soon p {
-            color: #777777;
-            font-size: 14px;
+        .article-subtitle {
+            color: #999999;
+            font-size: 18px;
+
+            margin-bottom: 35px;
         }
 
+        /* IMAGE */
 
-        /* =========================
-           CATEGORIAS
-        ========================== */
+        .article-image {
+            width: 100%;
+            height: 500px;
 
-        .categories {
-            background: #0c0c0c;
-            border-top: 1px solid #202020;
-            border-bottom: 1px solid #202020;
+            object-fit: cover;
+            display: block;
+
+            border-radius: 10px;
+            margin-bottom: 10px;
         }
 
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-        }
-
-        .category-card {
-            padding: 28px 20px;
-
-            background: #151515;
-            border: 1px solid #282828;
-            border-radius: 8px;
-
-            text-align: center;
-
-            transition: 0.25s;
-        }
-
-        .category-card:hover {
-            border-color: #39d353;
-            transform: translateY(-4px);
-        }
-
-        .category-icon {
-            font-size: 27px;
-            margin-bottom: 12px;
-        }
-
-        .category-card h3 {
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .category-card p {
+        .image-caption {
             color: #777777;
             font-size: 12px;
-            margin-top: 5px;
+            margin-bottom: 45px;
         }
 
+        /* TEXT */
 
-        /* =========================
-           MATÉRIAS DE CLUBES E SELEÇÕES
-        ========================== */
-
-        .club-articles,
-        .selection-articles {
-            background: #101010;
-            border-bottom: 1px solid #202020;
+        .article-content {
+            font-size: 17px;
+            color: #dddddd;
         }
 
-        .club-article-grid,
-        .selection-article-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+        .article-content p {
+            margin-bottom: 25px;
         }
 
-        .club-article-card,
-        .selection-article-card {
-            background: #181818;
-            border: 1px solid #292929;
-            border-radius: 10px;
-            overflow: hidden;
+        .article-content h2 {
+            font-size: 28px;
+            color: #ffffff;
 
-            transition: 0.3s;
-        }
-
-        .club-article-card:hover,
-        .selection-article-card:hover {
-            border-color: #39d353;
-            transform: translateY(-4px);
-        }
-
-        .club-article-image,
-        .selection-article-image {
-            height: 260px;
-
-            background-position: center;
-            background-size: cover;
-        }
-
-        .club-article-image {
-            background:
-                linear-gradient(
-                    rgba(0,0,0,0.10),
-                    rgba(0,0,0,0.45)
-                ),
-                url("imagens/paysandu-penarol-1965.jpg")
-                center/cover;
-        }
-
-        .selection-article-image {
-            background:
-                linear-gradient(
-                    rgba(0,0,0,0.10),
-                    rgba(0,0,0,0.45)
-                ),
-                url("imagens/cbf-1982.jpg")
-                center/cover;
-        }
-
-        .club-article-content,
-        .selection-article-content {
-            padding: 30px;
-        }
-
-        .club-article-content h3,
-        .selection-article-content h3 {
-            font-size: 24px;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
-
-        .club-article-content p,
-        .selection-article-content p {
-            color: #999999;
-            margin-bottom: 22px;
-        }
-
-
-        /* =========================
-           SOBRE O FORA DE LINHA
-        ========================== */
-
-        .about {
-            max-width: 1200px;
-            margin: auto;
-            padding: 80px 25px;
-        }
-
-        .about-box {
-            padding: 45px;
-
-            background: #171717;
-            border: 1px solid #292929;
-            border-left: 4px solid #39d353;
-            border-radius: 8px;
-        }
-
-        .about-box h2 {
-            font-size: 30px;
+            margin-top: 45px;
             margin-bottom: 20px;
+
+            border-left: 4px solid #39d353;
+            padding-left: 15px;
         }
 
-        .about-box p {
-            max-width: 850px;
-            color: #a0a0a0;
-            margin-bottom: 15px;
-        }
-
-        .instagram {
-            display: inline-block;
-            margin-top: 15px;
-
-            color: #39d353;
-            font-weight: 700;
-
-            transition: 0.25s;
-        }
-
-        .instagram:hover {
+        .article-content strong {
             color: #ffffff;
         }
 
+        /* HIGHLIGHT */
 
-        /* =========================
-           FOOTER
-        ========================== */
+        .highlight {
+            background: #151515;
+            border-left: 4px solid #39d353;
 
-        footer {
-            background: #080808;
-            border-top: 1px solid #222222;
+            padding: 22px 25px;
+
+            margin: 35px 0;
+
+            border-radius: 5px;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 45px 25px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .footer-logo {
-            font-size: 20px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .footer-logo span {
+        .highlight strong {
             color: #39d353;
         }
 
-        .footer-text {
+        /* SOURCES */
+
+        .sources {
+            margin-top: 60px;
+
+            border-top: 1px solid #292929;
+            padding-top: 25px;
+        }
+
+        .sources summary {
+            cursor: pointer;
+
+            color: #39d353;
+
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .sources ul {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .sources li {
+            margin-bottom: 10px;
+            color: #999999;
+            font-size: 14px;
+        }
+
+        .sources a {
+            color: #aaaaaa;
+        }
+
+        .sources a:hover {
+            color: #39d353;
+        }
+
+        /* BACK */
+
+        .back {
+            display: inline-block;
+
+            margin-top: 50px;
+
+            color: #39d353;
+
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        .back:hover {
+            color: #ffffff;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 80px;
+
+            background: #0d0d0d;
+
+            border-top: 1px solid #222222;
+
+            padding: 30px 25px;
+
+            text-align: center;
+
             color: #666666;
+
             font-size: 13px;
         }
 
+        /* RESPONSIVE */
 
-        /* =========================
-           RESPONSIVIDADE
-        ========================== */
-
-        @media (max-width: 850px) {
+        @media (max-width: 700px) {
 
             .header-container {
                 flex-direction: column;
-                padding: 20px;
-                gap: 18px;
+                gap: 20px;
             }
 
             nav {
-                gap: 18px;
+                gap: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
 
-            .dropdown-menu {
-                left: 0;
-                transform: none;
+            .article-title {
+                font-size: 36px;
             }
 
-            .featured-card {
-                grid-template-columns: 1fr;
+            .article-image {
+                height: 300px;
             }
 
-            .featured-image {
-                min-height: 300px;
-            }
-
-            .popular {
-                grid-template-columns: 1fr;
-            }
-
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .club-article-grid,
-            .selection-article-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-        }
-
-
-        @media (max-width: 550px) {
-
-            .hero-container {
-                padding-top: 50px;
-                padding-bottom: 70px;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .hero-description {
+            .article-content {
                 font-size: 16px;
-            }
-
-            .featured-content {
-                padding: 30px 25px;
-            }
-
-            .featured-content h2 {
-                font-size: 27px;
-            }
-
-            .category-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-box {
-                padding: 30px 25px;
-            }
-
-            .club-article-content,
-            .selection-article-content {
-                padding: 25px;
-            }
-
-            .club-article-content h3,
-            .selection-article-content h3 {
-                font-size: 21px;
             }
 
         }
@@ -684,13 +279,8 @@
 
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     CABEÇALHO
-========================== -->
 
 <header>
 
@@ -702,44 +292,15 @@
 
         <nav>
 
-            <a href="index.html" class="active">
+            <a href="index.html">
                 Início
             </a>
 
-            <div class="dropdown">
+            <a href="index.html#curiosidades">
+                Curiosidades
+            </a>
 
-                <a href="#curiosidades">
-                    Curiosidades
-                    <span class="arrow">▼</span>
-                </a>
-
-                <div class="dropdown-menu">
-
-                    <a href="#clubes-materias">
-                        Clubes
-                    </a>
-
-                    <a href="#jogadores">
-                        Jogadores
-                    </a>
-
-                    <a href="#selecoes">
-                        Seleções
-                    </a>
-
-                    <a href="#torcidas">
-                        Torcidas
-                    </a>
-
-                    <a href="#treinadores">
-                        Treinadores
-                    </a>
-
-                </div>
-
-            </div>
-
-            <a href="#sobre">
+            <a href="index.html#sobre">
                 O que é o Fora de Linha
             </a>
 
@@ -750,467 +311,288 @@
 </header>
 
 
-<!-- =========================
-     HERO
-========================== -->
+<main>
 
-<section class="hero">
+    <article class="article-container">
 
-    <div class="hero-container">
+        <span class="category">
+            Seleções
+        </span>
 
-        <div class="hero-label">
-            Futebol além das quatro linhas
-        </div>
 
-        <h1>
-            Curiosidades que você provavelmente nunca ouviu.
+        <h1 class="article-title">
+            Como a CBF burlou a FIFA com seu escudo…
         </h1>
 
-        <p class="hero-description">
-            Histórias, fatos e curiosidades do futebol que vão muito além
-            dos 90 minutos.
+
+        <p class="article-subtitle">
+            O pequeno ramo de café escondido no escudo da Seleção Brasileira
+            durante a Copa do Mundo de 1982.
         </p>
 
-    </div>
 
-</section>
+        <!-- IMAGEM DA MATÉRIA -->
+
+        <img
+            src="imagens/cbf-1982.jpg"
+            alt="Zico durante a Copa do Mundo de 1982"
+            class="article-image"
+        >
 
 
-<!-- =========================
-     MATÉRIA PRINCIPAL
-========================== -->
+        <p class="image-caption">
+            Zico durante a Copa do Mundo de 1982, quando a Seleção Brasileira
+            utilizou o escudo com o ramo de café do IBC. Foto: reprodução.
+        </p>
 
-<section class="featured">
 
-    <a href="paysandu-penarol-1965.html" class="featured-card">
+        <div class="article-content">
 
-        <div class="featured-image"></div>
-
-        <div class="featured-content">
-
-            <span class="category">
-                Clubes
-            </span>
-
-            <h2>
-                A relação que você não conhece entre Peñarol e Paysandu
-            </h2>
 
             <p>
-                Em 1965, o Paysandu enfrentou um dos grandes times da América
-                do Sul e conseguiu uma vitória histórica por 3 a 0. Mas a
-                história não terminou naquele jogo.
+                No início da década de 1980, a CBF enfrentava dificuldades
+                financeiras e buscava novas formas de arrecadar dinheiro.
+                Foi nesse cenário que surgiu um acordo milionário com o
+                <strong>Instituto Brasileiro do Café (IBC)</strong>, uma
+                autarquia pública ligada ao governo brasileiro.
             </p>
 
-            <span class="read-more">
-                Ler matéria →
-            </span>
 
-        </div>
-
-    </a>
-
-</section>
-
-
-<!-- =========================
-     MAIS LIDAS
-========================== -->
-
-<main class="main-container">
-
-    <div class="section-title">
-
-        <div class="green-line"></div>
-
-        <h2>
-            🔥 Mais lidas
-        </h2>
-
-    </div>
+            <p>
+                A ideia era estampar o símbolo do instituto no uniforme da
+                Seleção Brasileira durante o período da Copa do Mundo.
+                O problema é que a FIFA não permitia a presença de
+                patrocínios nos uniformes das seleções durante suas
+                competições oficiais.
+            </p>
 
 
-    <section class="popular">
+            <p>
+                O Brasil, portanto, não poderia simplesmente entrar em campo
+                com o símbolo do IBC estampado na camisa.
+            </p>
 
-        <div class="popular-list">
 
-            <div class="coming-soon">
+            <h2>
+                O "jeitinho brasileiro"
+            </h2>
 
-                <div class="coming-soon-icon">
-                    ⚽
-                </div>
 
-                <h3>
-                    Em breve
-                </h3>
+            <p>
+                Mas a CBF encontrou uma solução bastante criativa.
+            </p>
 
-                <p>
-                    As matérias mais lidas do Fora de Linha
-                    aparecerão aqui em breve.
-                </p>
+
+            <p>
+                Para a Copa do Mundo de 1982, disputada na Espanha, o escudo
+                da Seleção Brasileira passou por uma pequena, mas importante,
+                alteração. Um <strong>ramo de café</strong>, representando
+                o IBC, foi incorporado ao desenho do escudo da CBF,
+                ao lado da Taça Jules Rimet.
+            </p>
+
+
+            <div class="highlight">
+
+                <strong>Curiosidade:</strong>
+
+                o acordo com o Instituto Brasileiro do Café teria envolvido
+                cerca de <strong>US$ 3 milhões</strong>, um valor enorme
+                para a época.
 
             </div>
 
+
+            <p>
+                Na prática, o patrocínio continuava presente na camisa,
+                mas agora fazia parte do próprio escudo. A estratégia
+                permitiu que a Seleção entrasse em campo com o símbolo
+                do IBC durante a Copa.
+            </p>
+
+
+            <p>
+                E foi justamente com esse uniforme que o Brasil disputou
+                uma das Copas mais marcantes de sua história. A equipe
+                comandada por <strong>Telê Santana</strong>, com nomes como
+                Zico, Sócrates, Falcão, Júnior e Éder, encantou o mundo
+                com seu futebol.
+            </p>
+
+
+            <p>
+                Apesar disso, o sonho do tetracampeonato terminou nas
+                quartas de final. O Brasil foi derrotado pela Itália por
+                <strong>3 a 2</strong>, em uma partida histórica disputada
+                no Estádio de Sarrià, em Barcelona.
+            </p>
+
+
+            <h2>
+                O fim do ramo de café
+            </h2>
+
+
+            <p>
+                Após o Mundial, a FIFA alertou a CBF de que uma estratégia
+                semelhante não seria tolerada novamente. O ramo de café,
+                porém, ainda apareceu no escudo durante parte dos anos
+                seguintes.
+            </p>
+
+
+            <p>
+                O símbolo acabou sendo retirado posteriormente. A versão
+                utilizada na Copa de 1986 já não apresentava o ramo do IBC.
+            </p>
+
+
+            <h2>
+                E essa não foi a única polêmica
+            </h2>
+
+
+            <p>
+                Alguns anos depois, a Seleção Brasileira voltou a se
+                envolver em uma polêmica envolvendo publicidade.
+            </p>
+
+
+            <p>
+                Em <strong>1987</strong>, durante um amistoso contra o
+                Chile, a camisa brasileira entrou em campo com a marca da
+                <strong>Coca-Cola</strong> estampada no peito.
+            </p>
+
+
+            <p>
+                O Brasil venceu a partida por 2 a 1, mas a iniciativa
+                gerou repercussão. A FIFA reagiu ao uso da publicidade
+                e a CBF acabou multada em
+                <strong>10 mil francos suíços</strong>.
+            </p>
+
+
+            <h2>
+                Um pequeno detalhe que entrou para a história
+            </h2>
+
+
+            <p>
+                O caso do ramo de café continua sendo um dos episódios
+                mais curiosos da história dos uniformes da Seleção
+                Brasileira.
+            </p>
+
+
+            <p>
+                Em vez de colocar o patrocínio de maneira tradicional,
+                a CBF encontrou uma maneira de incorporá-lo ao próprio
+                escudo da Seleção.
+            </p>
+
+
+            <p>
+                Era apenas um pequeno ramo de café. Mas, escondido dentro
+                de um dos escudos mais famosos do futebol, ele acabou
+                entrando para a história da Seleção Brasileira.
+            </p>
+
+
         </div>
 
 
-        <aside>
+        <!-- FONTES -->
 
-            <div class="section-title">
+        <details class="sources">
 
-                <div class="green-line"></div>
+            <summary>
+                📚 Fontes da matéria
+            </summary>
 
-                <h2>
-                    Sobre
-                </h2>
+            <ul>
 
-            </div>
+                <li>
+                    <a
+                        href="https://mantosdofutebol.com.br/2014/04/ibc-patrocinio-camisa-selecao-brasileira-1982/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Mantos do Futebol — IBC e o patrocínio na camisa da Seleção Brasileira em 1982
+                    </a>
+                </li>
 
-            <p style="color:#888; margin-bottom:20px;">
-                O Fora de Linha é um projeto criado para contar histórias
-                e apresentar curiosidades do futebol que muitas vezes
-                passam despercebidas.
-            </p>
+                <li>
+                    <a
+                        href="https://www1.folha.uol.com.br/blogs/cafe-na-prensa/2026/05/fifa-proibiu-cafe-na-camisa-da-selecao-mas-cbf-deu-jeitinho-em-1982.shtml"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Folha — FIFA proibiu café na camisa da Seleção, mas CBF deu jeitinho em 1982
+                    </a>
+                </li>
 
-            <a href="#sobre" class="read-more">
-                Conheça o projeto →
-            </a>
+                <li>
+                    <a
+                        href="https://www.cbf.com.br/selecao-brasileira/noticias/jogos-inesqueciveis/a/selecao-de-1982-a-equipe-que-encantou-o-mundo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CBF — Seleção de 1982: a equipe que encantou o mundo
+                    </a>
+                </li>
 
-        </aside>
+                <li>
+                    <a
+                        href="https://www.cbf.com.br/selecao-brasileira/noticias/selecao-masculina/a/brasil-nas-copas-1982-selecao-encanta-o-mundo-de-novo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CBF — Brasil nas Copas: 1982, Seleção encanta o mundo de novo
+                    </a>
+                </li>
 
-    </section>
+                <li>
+                    <a
+                        href="https://memoriaglobo.globo.com/esporte/copa-do-mundo-da-espanha-1982/noticia/selecao-brasileira.ghtml"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Memória Globo — Seleção Brasileira na Copa de 1982
+                    </a>
+                </li>
+
+            </ul>
+
+        </details>
+
+
+        <a href="index.html" class="back">
+            ← Voltar para o Fora de Linha
+        </a>
+
+
+    </article>
 
 </main>
 
 
-<!-- =========================
-     CATEGORIAS
-========================== -->
-
-<section class="categories" id="curiosidades">
-
-    <div class="main-container">
-
-        <div class="section-title">
-
-            <div class="green-line"></div>
-
-            <h2>
-                Curiosidades
-            </h2>
-
-        </div>
-
-
-        <div class="category-grid">
-
-
-            <!-- CLUBES -->
-
-            <a href="#clubes-materias" class="category-card">
-
-                <div class="category-icon">
-                    🏟️
-                </div>
-
-                <h3>
-                    Clubes
-                </h3>
-
-                <p>
-                    Histórias dos clubes
-                </p>
-
-            </a>
-
-
-            <!-- JOGADORES -->
-
-            <a href="#jogadores" class="category-card" id="jogadores">
-
-                <div class="category-icon">
-                    ⚽
-                </div>
-
-                <h3>
-                    Jogadores
-                </h3>
-
-                <p>
-                    Craques e suas histórias
-                </p>
-
-            </a>
-
-
-            <!-- SELEÇÕES -->
-
-            <a href="#selecoes" class="category-card">
-
-                <div class="category-icon">
-                    🌎
-                </div>
-
-                <h3>
-                    Seleções
-                </h3>
-
-                <p>
-                    Futebol pelo mundo
-                </p>
-
-            </a>
-
-
-            <!-- TORCIDAS -->
-
-            <a href="#torcidas" class="category-card" id="torcidas">
-
-                <div class="category-icon">
-                    🗣️
-                </div>
-
-                <h3>
-                    Torcidas
-                </h3>
-
-                <p>
-                    Paixão dentro e fora do estádio
-                </p>
-
-            </a>
-
-
-            <!-- TREINADORES -->
-
-            <a href="#treinadores" class="category-card" id="treinadores">
-
-                <div class="category-icon">
-                    🧠
-                </div>
-
-                <h3>
-                    Treinadores
-                </h3>
-
-                <p>
-                    Os homens à beira do campo
-                </p>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     MATÉRIAS DE CLUBES
-========================== -->
-
-<section class="club-articles" id="clubes-materias">
-
-    <div class="main-container">
-
-        <div class="section-title">
-
-            <div class="green-line"></div>
-
-            <h2>
-                Clubes
-            </h2>
-
-        </div>
-
-
-        <div class="club-article-grid">
-
-            <a href="paysandu-penarol-1965.html" class="club-article-card">
-
-                <div class="club-article-image"></div>
-
-                <div class="club-article-content">
-
-                    <span class="category">
-                        Clubes
-                    </span>
-
-                    <h3>
-                        A relação que você não conhece entre Peñarol e Paysandu
-                    </h3>
-
-                    <p>
-                        Em 1965, o Paysandu enfrentou o poderoso Peñarol
-                        e conseguiu uma vitória histórica por 3 a 0.
-                    </p>
-
-                    <span class="read-more">
-                        Ler matéria →
-                    </span>
-
-                </div>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     MATÉRIAS DE SELEÇÕES
-========================== -->
-
-<section class="selection-articles" id="selecoes">
-
-    <div class="main-container">
-
-        <div class="section-title">
-
-            <div class="green-line"></div>
-
-            <h2>
-                Seleções
-            </h2>
-
-        </div>
-
-
-        <div class="selection-article-grid">
-
-
-            <!-- MATÉRIA CBF / IBC -->
-
-            <a href="como-cbf-burlou-fifa.html"
-               class="selection-article-card">
-
-                <div class="selection-article-image"></div>
-
-                <div class="selection-article-content">
-
-                    <span class="category">
-                        Seleções
-                    </span>
-
-                    <h3>
-                        Como a CBF burlou a FIFA com seu escudo…
-                    </h3>
-
-                    <p>
-                        Na Copa de 1982, a Seleção Brasileira encontrou
-                        uma maneira curiosa de colocar um patrocinador
-                        dentro do próprio escudo.
-                    </p>
-
-                    <span class="read-more">
-                        Ler matéria →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ÁREAS FUTURAS
-========================== -->
-
-<section id="jogadores" style="display:none;"></section>
-
-<section id="torcidas" style="display:none;"></section>
-
-<section id="treinadores" style="display:none;"></section>
-
-
-<!-- =========================
-     SOBRE O PROJETO
-========================== -->
-
-<section class="about" id="sobre">
-
-    <div class="section-title">
-
-        <div class="green-line"></div>
-
-        <h2>
-            O que é o Fora de Linha?
-        </h2>
-
-    </div>
-
-
-    <div class="about-box">
-
-        <h2>
-            Futebol além do óbvio.
-        </h2>
-
-        <p>
-            O Fora de Linha nasceu com uma ideia simples: mostrar que
-            existe muito mais no futebol do que aquilo que acontece
-            durante os 90 minutos.
-        </p>
-
-        <p>
-            Aqui você encontra curiosidades, histórias e fatos sobre
-            clubes, jogadores, seleções, torcidas e treinadores.
-        </p>
-
-        <p>
-            Nosso objetivo é trazer informações interessantes de uma
-            maneira simples, direta e que faça você enxergar o futebol
-            de uma forma diferente.
-        </p>
-
-        <a href="https://www.instagram.com/julio_balbinot/"
-   class="instagram"
-   target="_blank"
-   rel="noopener noreferrer">
-    📸 Instagram: @julio_balbinot
-</a>
-
-<a href="https://www.instagram.com/lorenzopreginato/"
-   class="instagram"
-   target="_blank"
-   rel="noopener noreferrer">
-    📸 Instagram: @lorenzopreginato
-</a>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     RODAPÉ
-========================== -->
-
 <footer>
 
-    <div class="footer-container">
-
-        <div class="footer-logo">
-            FORA <span>DE LINHA</span>
-        </div>
-
-        <div class="footer-text">
-            © 2026 Fora de Linha. Todos os direitos reservados.
-        </div>
-
-    </div>
+    © 2026 Fora de Linha — Curiosidades além dos 90 minutos.
 
 </footer>
 
 
 </body>
+
+</html>
+```
+
+Agora a imagem é carregada diretamente pelo HTML através de:
+
+```html
+src="imagens/cbf-1982.jpg"
+```
+
+Isso é mais confiável do que o `background` que estava sendo usado.
