@@ -130,6 +130,18 @@
             margin-bottom: 45px;
         }
 
+        /* VISUALIZAÇÕES */
+
+        .views {
+            color: #777777;
+            font-size: 13px;
+            margin-bottom: 35px;
+        }
+
+        .views span {
+            color: #aaaaaa;
+        }
+
         /* TEXT */
 
         .article-content {
@@ -344,6 +356,13 @@
             Zico durante a Copa do Mundo de 1982, quando a Seleção Brasileira
             utilizou o escudo com o ramo de café do IBC. Foto: reprodução.
         </p>
+
+
+        <!-- CONTADOR DE VISUALIZAÇÕES -->
+
+        <div class="views">
+            👁️ <span id="contador-visualizacoes">Carregando visualizações...</span>
+        </div>
 
 
         <div class="article-content">
@@ -584,15 +603,113 @@
 </footer>
 
 
+<!-- ========================================================= -->
+<!-- FIREBASE -->
+<!-- ========================================================= -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+
+<script>
+
+    // CONFIGURAÇÃO DO FIREBASE
+
+    const firebaseConfig = {
+
+        apiKey: "AIzaSyDb86GnOJRINq7y5MEi-fwkFzZViswVCtw",
+
+        authDomain: "fora-de-linha.firebaseapp.com",
+
+        projectId: "fora-de-linha",
+
+        storageBucket: "fora-de-linha.firebasestorage.app",
+
+        messagingSenderId: "843010439814",
+
+        appId: "1:843010439814:web:89a32a2fc63b7746d7af07",
+
+        measurementId: "G-ZBY5GP2RF9"
+
+    };
+
+
+    // INICIALIZA O FIREBASE
+
+    firebase.initializeApp(firebaseConfig);
+
+
+    // CONECTA AO FIRESTORE
+
+    const db = firebase.firestore();
+
+
+    // IDENTIFICA ESTA MATÉRIA
+
+    const materiaId = "cbf-burlou-fifa-1982";
+
+
+    // ELEMENTO ONDE APARECERÁ O NÚMERO DE VISUALIZAÇÕES
+
+    const contador = document.getElementById("contador-visualizacoes");
+
+
+    // DOCUMENTO DA MATÉRIA NO FIRESTORE
+
+    const materiaRef = db.collection("materias").doc(materiaId);
+
+
+    // REGISTRA A VISUALIZAÇÃO
+
+    materiaRef.set({
+
+        titulo: "Como a CBF burlou a FIFA com seu escudo…",
+
+        categoria: "Seleções",
+
+        visualizacoes: firebase.firestore.FieldValue.increment(1)
+
+    }, { merge: true })
+
+    .then(() => {
+
+        // Depois de adicionar a visualização,
+        // buscamos o número atualizado.
+
+        return materiaRef.get();
+
+    })
+
+    .then((doc) => {
+
+        if (doc.exists) {
+
+            const dados = doc.data();
+
+            const visualizacoes = dados.visualizacoes || 0;
+
+            contador.textContent =
+                visualizacoes === 1
+                ? "1 visualização"
+                : visualizacoes + " visualizações";
+
+        }
+
+    })
+
+    .catch((erro) => {
+
+        console.error("Erro ao registrar visualização:", erro);
+
+        contador.textContent = "Visualizações indisponíveis";
+
+    });
+
+</script>
+
+
 </body>
 
 </html>
 ```
-
-Agora a imagem é carregada diretamente pelo HTML através de:
-
-```html
-src="imagens/cbf-1982.jpg"
-```
-
-Isso é mais confiável do que o `background` que estava sendo usado.
