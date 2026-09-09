@@ -429,6 +429,63 @@
 
 
         /* =========================
+           MATÉRIAS DE CLUBES
+        ========================== */
+
+        .club-articles {
+            background: #101010;
+            border-bottom: 1px solid #202020;
+        }
+
+        .club-article-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .club-article-card {
+            background: #181818;
+            border: 1px solid #292929;
+            border-radius: 10px;
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+        .club-article-card:hover {
+            border-color: #39d353;
+            transform: translateY(-4px);
+        }
+
+        .club-article-image {
+            height: 260px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.10),
+                    rgba(0,0,0,0.45)
+                ),
+                url("imagens/paysandu-penarol-1965.jpg")
+                center/cover;
+        }
+
+        .club-article-content {
+            padding: 30px;
+        }
+
+        .club-article-content h3 {
+            font-size: 24px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .club-article-content p {
+            color: #999999;
+            margin-bottom: 22px;
+        }
+
+
+        /* =========================
            SOBRE O FORA DE LINHA
         ========================== */
 
@@ -464,6 +521,12 @@
 
             color: #39d353;
             font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        .instagram:hover {
+            color: #ffffff;
         }
 
 
@@ -542,6 +605,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .club-article-grid {
+                grid-template-columns: 1fr;
+            }
+
             .footer-container {
                 flex-direction: column;
                 text-align: center;
@@ -581,6 +648,14 @@
                 padding: 30px 25px;
             }
 
+            .club-article-content {
+                padding: 25px;
+            }
+
+            .club-article-content h3 {
+                font-size: 21px;
+            }
+
         }
 
     </style>
@@ -618,7 +693,7 @@
 
                 <div class="dropdown-menu">
 
-                    <a href="#clubes">
+                    <a href="#clubes-materias">
                         Clubes
                     </a>
 
@@ -812,7 +887,7 @@
 
             <!-- CLUBES -->
 
-            <a href="#clubes" class="category-card" id="clubes">
+            <a href="#clubes-materias" class="category-card">
 
                 <div class="category-icon">
                     🏟️
@@ -912,6 +987,61 @@
 
 
 <!-- =========================
+     MATÉRIAS DE CLUBES
+========================== -->
+
+<section class="club-articles" id="clubes-materias">
+
+    <div class="main-container">
+
+        <div class="section-title">
+
+            <div class="green-line"></div>
+
+            <h2>
+                Clubes
+            </h2>
+
+        </div>
+
+
+        <div class="club-article-grid">
+
+            <a href="paysandu-penarol-1965.html" class="club-article-card">
+
+                <div class="club-article-image"></div>
+
+                <div class="club-article-content">
+
+                    <span class="category">
+                        Clubes
+                    </span>
+
+                    <h3>
+                        A relação que você não conhece entre Peñarol e Paysandu
+                    </h3>
+
+                    <p>
+                        Em 1965, o Paysandu enfrentou o poderoso Peñarol
+                        e conseguiu uma vitória histórica por 3 a 0.
+                    </p>
+
+                    <span class="read-more">
+                        Ler matéria →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
      SOBRE O PROJETO
 ========================== -->
 
@@ -951,12 +1081,12 @@
             de uma forma diferente.
         </p>
 
-        <a href="https://www.instagram.com/julio_balbinot/" 
-   class="instagram" 
-   target="_blank" 
-   rel="noopener noreferrer">
-    📸 Instagram: @julio_balbinot
-</a>
+        <a href="https://www.instagram.com/julio_balbinot/"
+           class="instagram"
+           target="_blank"
+           rel="noopener noreferrer">
+            📸 Instagram: @julio_balbinot
+        </a>
 
     </div>
 
