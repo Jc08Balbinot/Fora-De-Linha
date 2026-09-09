@@ -326,81 +326,86 @@
        MAIS LIDAS
     ========================== */
 
-    .popular {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 40px;
-    }
+  <main class="main-container">
 
-    .popular-list {
-        display: flex;
-        flex-direction: column;
-    }
+    <div class="section-title">
 
-    .popular-item {
-        display: grid;
-        grid-template-columns: 150px 1fr;
-        gap: 20px;
+        <div class="green-line"></div>
 
-        padding: 18px 0;
-        border-bottom: 1px solid #292929;
+        <h2>
+            🔥 Mais lidas
+        </h2>
 
-        transition: 0.2s;
-    }
+    </div>
 
-    .popular-item:first-child {
-        padding-top: 0;
-    }
+    <section class="popular">
 
-    .popular-item:hover h3 {
-        color: #39d353;
-    }
+        <div class="popular-list">
 
-    .popular-image {
-        height: 95px;
-        border-radius: 7px;
-        background-size: cover;
-        background-position: center;
-    }
+            <div style="
+                padding: 45px 20px;
+                background: #151515;
+                border: 1px solid #292929;
+                border-radius: 8px;
+                text-align: center;
+            ">
 
-    .popular-item:nth-child(1) .popular-image {
-        background-image:
-            url("https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=500&q=80");
-    }
+                <div style="
+                    font-size: 35px;
+                    margin-bottom: 15px;
+                ">
+                    ⚽
+                </div>
 
-    .popular-item:nth-child(2) .popular-image {
-        background-image:
-            url("https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=500&q=80");
-    }
+                <h3 style="
+                    font-size: 20px;
+                    margin-bottom: 8px;
+                ">
+                    Em breve
+                </h3>
 
-    .popular-item:nth-child(3) .popular-image {
-        background-image:
-            url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=500&q=80");
-    }
+                <p style="
+                    color: #777777;
+                    font-size: 14px;
+                ">
+                    As matérias mais lidas do Fora de Linha
+                    aparecerão aqui em breve.
+                </p>
 
-    .popular-item:nth-child(4) .popular-image {
-        background-image:
-            url("https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=500&q=80");
-    }
+            </div>
 
-    .popular-number {
-        color: #555555;
-        font-size: 13px;
-        font-weight: 800;
-        margin-bottom: 5px;
-    }
+        </div>
 
-    .popular-item h3 {
-        font-size: 20px;
-        line-height: 1.25;
-        transition: 0.2s;
-    }
 
-    .popular-item p {
-        color: #777777;
-        font-size: 14px;
-        margin-top: 7px;
-    }
+        <!-- LADO DIREITO -->
+
+        <aside>
+
+            <div class="section-title">
+
+                <div class="green-line"></div>
+
+                <h2>
+                    Sobre
+                </h2>
+
+            </div>
+
+            <p style="color:#888; margin-bottom:20px;">
+                O Fora de Linha é um projeto criado para contar histórias
+                e apresentar curiosidades do futebol que muitas vezes
+                passam despercebidas.
+            </p>
+
+            <a href="#sobre" class="read-more">
+                Conheça o projeto →
+            </a>
+
+        </aside>
+
+    </section>
+
+</main>
 
     /* =========================
        CATEGORIAS
