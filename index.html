@@ -1,637 +1,602 @@
 <!DOCTYPE html>
 
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Fora de Linha | Curiosidades do Futebol</title>
-
-<meta name="description" content="Fora de Linha — curiosidades, histórias e fatos do futebol que você provavelmente nunca ouviu.">
-
-<style>
-    /* =========================
-       CONFIGURAÇÕES GERAIS
-    ========================== */
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #101010;
-        color: #eeeeee;
-        line-height: 1.6;
-    }
-
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    img {
-        max-width: 100%;
-        display: block;
-    }
-
-    /* =========================
-       CABEÇALHO
-    ========================== */
-
-    header {
-        background: #0a0a0a;
-        border-bottom: 1px solid #252525;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-
-    .header-container {
-        max-width: 1200px;
-        margin: auto;
-        min-height: 78px;
-        padding: 0 25px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    /* LOGO */
-
-    .logo {
-        font-size: 28px;
-        font-weight: 900;
-        letter-spacing: 2px;
-        color: #ffffff;
-    }
-
-    .logo span {
-        color: #39d353;
-    }
-
-    /* MENU */
-
-    nav {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-    }
-
-    nav a {
-        color: #bdbdbd;
-        font-size: 15px;
-        font-weight: 600;
-        transition: 0.25s;
-    }
-
-    nav a:hover,
-    nav a.active {
-        color: #39d353;
-    }
-
-    /* MENU CURIOSIDADES */
-
-    .dropdown {
-        position: relative;
-    }
-
-    .dropdown > a {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .arrow {
-        font-size: 11px;
-    }
-
-    .dropdown-menu {
-        position: absolute;
-        top: 32px;
-        left: 50%;
-        transform: translateX(-50%);
-
-        width: 190px;
-        padding: 8px;
-
-        background: #151515;
-        border: 1px solid #292929;
-        border-radius: 8px;
-
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.2s;
-    }
-
-    .dropdown:hover .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .dropdown-menu a {
-        display: block;
-        padding: 10px 12px;
-        border-radius: 5px;
-    }
-
-    .dropdown-menu a:hover {
-        background: #202020;
-        color: #39d353;
-    }
-
-    /* =========================
-       HERO / DESTAQUE
-    ========================== */
-
-    .hero {
-        background:
-            linear-gradient(
-                90deg,
-                #0b0b0b 0%,
-                #111111 50%,
-                #151515 100%
-            );
-
-        border-bottom: 1px solid #242424;
-    }
-
-    .hero-container {
-        max-width: 1200px;
-        margin: auto;
-        padding: 75px 25px 85px;
-    }
-
-    .hero-label {
-        color: #39d353;
-        font-size: 13px;
-        font-weight: 800;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        margin-bottom: 15px;
-    }
-
-    .hero h1 {
-        max-width: 800px;
-        font-size: clamp(38px, 6vw, 72px);
-        line-height: 1.05;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: -2px;
-        margin-bottom: 20px;
-    }
-
-    .hero-description {
-        max-width: 620px;
-        color: #999999;
-        font-size: 18px;
-        margin-bottom: 40px;
-    }
-
-    /* =========================
-       MATÉRIA PRINCIPAL
-    ========================== */
-
-    .featured {
-        max-width: 1200px;
-        margin: -35px auto 0;
-        padding: 0 25px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .featured-card {
-        background: #181818;
-        border: 1px solid #292929;
-        border-radius: 12px;
-        overflow: hidden;
-
-        display: grid;
-        grid-template-columns: 1.3fr 1fr;
-
-        transition: 0.3s;
-    }
-
-    .featured-card:hover {
-        border-color: #39d353;
-        transform: translateY(-3px);
-    }
-
-    .featured-image {
-        min-height: 420px;
-        background:
-            linear-gradient(
-                rgba(0,0,0,0.15),
-                rgba(0,0,0,0.55)
-            ),
-            url("https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80")
-            center/cover;
-    }
-
-    .featured-content {
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .category {
-        display: inline-block;
-        width: fit-content;
-        color: #39d353;
-        font-size: 12px;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 18px;
-    }
-
-    .featured-content h2 {
-        font-size: 34px;
-        line-height: 1.15;
-        margin-bottom: 18px;
-    }
-
-    .featured-content p {
-        color: #999999;
-        margin-bottom: 28px;
-    }
-
-    .read-more {
-        width: fit-content;
-        padding: 11px 20px;
-
-        border: 1px solid #39d353;
-        border-radius: 5px;
-
-        color: #39d353;
-        font-weight: 700;
-        font-size: 14px;
-
-        transition: 0.25s;
-    }
-
-    .read-more:hover {
-        background: #39d353;
-        color: #071007;
-    }
-
-    /* =========================
-       CONTEÚDO PRINCIPAL
-    ========================== */
-
-    .main-container {
-        max-width: 1200px;
-        margin: auto;
-        padding: 75px 25px;
-    }
-
-    .section-title {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-
-        margin-bottom: 30px;
-    }
-
-    .section-title h2 {
-        font-size: 27px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .section-title::after {
-        content: "";
-        height: 2px;
-        flex: 1;
-        background: #282828;
-    }
-
-    .green-line {
-        width: 35px;
-        height: 4px;
-        background: #39d353;
-        border-radius: 5px;
-    }
-
-    /* =========================
-       MAIS LIDAS
-    ========================== */
-
- <main class="main-container">
-
-    <div class="section-title">
-
-        <div class="green-line"></div>
-
-        <h2>
-            🔥 Mais lidas
-        </h2>
-
-    </div>
-
-    <section class="popular">
-
-        <div class="popular-list">
-
-            <div style="
-                padding: 45px 20px;
-                background: #151515;
-                border: 1px solid #292929;
-                border-radius: 8px;
-                text-align: center;
-            ">
-
-                <div style="
-                    font-size: 35px;
-                    margin-bottom: 15px;
-                ">
-                    ⚽
-                </div>
-
-                <h3 style="
-                    font-size: 20px;
-                    margin-bottom: 8px;
-                ">
-                    Em breve
-                </h3>
-
-                <p style="
-                    color: #777777;
-                    font-size: 14px;
-                ">
-                    As matérias mais lidas do Fora de Linha
-                    aparecerão aqui em breve.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- LADO DIREITO -->
-
-        <aside>
-
-            <div class="section-title">
-
-                <div class="green-line"></div>
-
-                <h2>
-                    Sobre
-                </h2>
-
-            </div>
-
-            <p style="color:#888; margin-bottom:20px;">
-                O Fora de Linha é um projeto criado para contar histórias
-                e apresentar curiosidades do futebol que muitas vezes
-                passam despercebidas.
-            </p>
-
-            <a href="#sobre" class="read-more">
-                Conheça o projeto →
-            </a>
-
-        </aside>
-
-    </section>
-
-</main>
-
-    /* =========================
-       CATEGORIAS
-    ========================== */
-
-    .categories {
-        background: #0c0c0c;
-        border-top: 1px solid #202020;
-        border-bottom: 1px solid #202020;
-    }
-
-    .category-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 15px;
-    }
-
-    .category-card {
-        padding: 28px 20px;
-
-        background: #151515;
-        border: 1px solid #282828;
-        border-radius: 8px;
-
-        text-align: center;
-
-        transition: 0.25s;
-    }
-
-    .category-card:hover {
-        border-color: #39d353;
-        transform: translateY(-4px);
-    }
-
-    .category-icon {
-        font-size: 27px;
-        margin-bottom: 12px;
-    }
-
-    .category-card h3 {
-        font-size: 15px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .category-card p {
-        color: #777777;
-        font-size: 12px;
-        margin-top: 5px;
-    }
-
-    /* =========================
-       SOBRE O FORA DE LINHA
-    ========================== */
-
-    .about {
-        max-width: 1200px;
-        margin: auto;
-        padding: 80px 25px;
-    }
-
-    .about-box {
-        padding: 45px;
-
-        background: #171717;
-        border: 1px solid #292929;
-        border-left: 4px solid #39d353;
-        border-radius: 8px;
-    }
-
-    .about-box h2 {
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
-
-    .about-box p {
-        max-width: 850px;
-        color: #a0a0a0;
-        margin-bottom: 15px;
-    }
-
-    .instagram {
-        display: inline-block;
-        margin-top: 15px;
-
-        color: #39d353;
-        font-weight: 700;
-    }
-
-    /* =========================
-       FOOTER
-    ========================== */
-
-    footer {
-        background: #080808;
-        border-top: 1px solid #222222;
-    }
-
-    .footer-container {
-        max-width: 1200px;
-        margin: auto;
-        padding: 45px 25px;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .footer-logo {
-        font-size: 20px;
-        font-weight: 900;
-        letter-spacing: 1px;
-    }
-
-    .footer-logo span {
-        color: #39d353;
-    }
-
-    .footer-text {
-        color: #666666;
-        font-size: 13px;
-    }
-
-    /* =========================
-       RESPONSIVIDADE
-    ========================== */
-
-    @media (max-width: 850px) {
-
-        .header-container {
-            flex-direction: column;
-            padding: 20px;
-            gap: 18px;
+    <title>Fora de Linha | Curiosidades do Futebol</title>
+
+    <meta
+        name="description"
+        content="Fora de Linha — curiosidades, histórias e fatos do futebol que você provavelmente nunca ouviu."
+    >
+
+    <style>
+
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #101010;
+            color: #eeeeee;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* =========================
+           CABEÇALHO
+        ========================== */
+
+        header {
+            background: #0a0a0a;
+            border-bottom: 1px solid #252525;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 78px;
+            padding: 0 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #39d353;
+        }
+
+
+        /* MENU */
+
         nav {
-            gap: 18px;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #bdbdbd;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #39d353;
+        }
+
+
+        /* MENU CURIOSIDADES */
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .arrow {
+            font-size: 11px;
         }
 
         .dropdown-menu {
-            left: 0;
-            transform: none;
+            position: absolute;
+            top: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 190px;
+            padding: 8px;
+
+            background: #151515;
+            border: 1px solid #292929;
+            border-radius: 8px;
+
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
         }
 
-        .featured-card {
-            grid-template-columns: 1fr;
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .featured-image {
-            min-height: 300px;
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 5px;
         }
 
-        .popular {
-            grid-template-columns: 1fr;
+        .dropdown-menu a:hover {
+            background: #202020;
+            color: #39d353;
         }
 
-        .category-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
 
-        .footer-container {
-            flex-direction: column;
-            text-align: center;
-        }
-    }
+        /* =========================
+           HERO / DESTAQUE
+        ========================== */
 
-    @media (max-width: 550px) {
+        .hero {
+            background:
+                linear-gradient(
+                    90deg,
+                    #0b0b0b 0%,
+                    #111111 50%,
+                    #151515 100%
+                );
+
+            border-bottom: 1px solid #242424;
+        }
 
         .hero-container {
-            padding-top: 50px;
-            padding-bottom: 70px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 75px 25px 85px;
+        }
+
+        .hero-label {
+            color: #39d353;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
         }
 
         .hero h1 {
-            font-size: 40px;
+            max-width: 800px;
+            font-size: clamp(38px, 6vw, 72px);
+            line-height: 1.05;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
         }
 
         .hero-description {
-            font-size: 16px;
+            max-width: 620px;
+            color: #999999;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+
+        /* =========================
+           MATÉRIA PRINCIPAL
+        ========================== */
+
+        .featured {
+            max-width: 1200px;
+            margin: -35px auto 0;
+            padding: 0 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .featured-card {
+            background: #181818;
+            border: 1px solid #292929;
+            border-radius: 12px;
+            overflow: hidden;
+
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+
+            transition: 0.3s;
+        }
+
+        .featured-card:hover {
+            border-color: #39d353;
+            transform: translateY(-3px);
+        }
+
+        .featured-image {
+            min-height: 420px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.55)
+                ),
+                url("imagens/paysandu-penarol-1965.jpg")
+                center/cover;
         }
 
         .featured-content {
-            padding: 30px 25px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .category {
+            display: inline-block;
+            width: fit-content;
+            color: #39d353;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
         }
 
         .featured-content h2 {
+            font-size: 34px;
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+
+        .featured-content p {
+            color: #999999;
+            margin-bottom: 28px;
+        }
+
+        .read-more {
+            width: fit-content;
+            padding: 11px 20px;
+
+            border: 1px solid #39d353;
+            border-radius: 5px;
+
+            color: #39d353;
+            font-weight: 700;
+            font-size: 14px;
+
+            transition: 0.25s;
+        }
+
+        .read-more:hover {
+            background: #39d353;
+            color: #071007;
+        }
+
+
+        /* =========================
+           CONTEÚDO PRINCIPAL
+        ========================== */
+
+        .main-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 75px 25px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
             font-size: 27px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .popular-item {
-            grid-template-columns: 100px 1fr;
-            gap: 13px;
+        .section-title::after {
+            content: "";
+            height: 2px;
+            flex: 1;
+            background: #282828;
         }
 
-        .popular-image {
-            height: 80px;
+        .green-line {
+            width: 35px;
+            height: 4px;
+            background: #39d353;
+            border-radius: 5px;
         }
 
-        .popular-item h3 {
-            font-size: 16px;
+
+        /* =========================
+           MAIS LIDAS
+        ========================== */
+
+        .popular {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+        }
+
+        .popular-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .coming-soon {
+            padding: 45px 20px;
+            background: #151515;
+            border: 1px solid #292929;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .coming-soon-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .coming-soon h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .coming-soon p {
+            color: #777777;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           CATEGORIAS
+        ========================== */
+
+        .categories {
+            background: #0c0c0c;
+            border-top: 1px solid #202020;
+            border-bottom: 1px solid #202020;
         }
 
         .category-grid {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .category-card {
+            padding: 28px 20px;
+
+            background: #151515;
+            border: 1px solid #282828;
+            border-radius: 8px;
+
+            text-align: center;
+
+            transition: 0.25s;
+        }
+
+        .category-card:hover {
+            border-color: #39d353;
+            transform: translateY(-4px);
+        }
+
+        .category-icon {
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .category-card h3 {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .category-card p {
+            color: #777777;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+
+        /* =========================
+           SOBRE O FORA DE LINHA
+        ========================== */
+
+        .about {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 25px;
         }
 
         .about-box {
-            padding: 30px 25px;
+            padding: 45px;
+
+            background: #171717;
+            border: 1px solid #292929;
+            border-left: 4px solid #39d353;
+            border-radius: 8px;
         }
-    }
-</style>
-```
+
+        .about-box h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about-box p {
+            max-width: 850px;
+            color: #a0a0a0;
+            margin-bottom: 15px;
+        }
+
+        .instagram {
+            display: inline-block;
+            margin-top: 15px;
+
+            color: #39d353;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #080808;
+            border-top: 1px solid #222222;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .footer-logo span {
+            color: #39d353;
+        }
+
+        .footer-text {
+            color: #666666;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================== */
+
+        @media (max-width: 850px) {
+
+            .header-container {
+                flex-direction: column;
+                padding: 20px;
+                gap: 18px;
+            }
+
+            nav {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .dropdown-menu {
+                left: 0;
+                transform: none;
+            }
+
+            .featured-card {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image {
+                min-height: 300px;
+            }
+
+            .popular {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .hero-container {
+                padding-top: 50px;
+                padding-bottom: 70px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .featured-content {
+                padding: 30px 25px;
+            }
+
+            .featured-content h2 {
+                font-size: 27px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-box {
+                padding: 30px 25px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-```
+
 <!-- =========================
      CABEÇALHO
 ========================== -->
 
 <header>
+
     <div class="header-container">
 
         <a href="index.html" class="logo">
@@ -684,6 +649,7 @@
         </nav>
 
     </div>
+
 </header>
 
 
@@ -719,23 +685,24 @@
 
 <section class="featured">
 
-    <a href="#" class="featured-card">
+    <a href="paysandu-penarol-1965.html" class="featured-card">
 
         <div class="featured-image"></div>
 
         <div class="featured-content">
 
             <span class="category">
-                Competição
+                Clubes
             </span>
 
             <h2>
-                7 coisas que você não sabia sobre a Champions League
+                A relação que você não conhece entre Peñarol e Paysandu
             </h2>
 
             <p>
-                A maior competição de clubes do mundo possui histórias,
-                recordes e acontecimentos que nem todo torcedor conhece.
+                Em 1965, o Paysandu enfrentou um dos grandes times da América
+                do Sul e conseguiu uma vitória histórica por 3 a 0. Mas a
+                história não terminou naquele jogo.
             </p>
 
             <span class="read-more">
@@ -770,97 +737,22 @@
 
         <div class="popular-list">
 
-            <a href="#" class="popular-item">
+            <div class="coming-soon">
 
-                <div class="popular-image"></div>
-
-                <div>
-
-                    <div class="popular-number">
-                        01
-                    </div>
-
-                    <h3>
-                        A origem do cartão vermelho no futebol
-                    </h3>
-
-                    <p>
-                        Como uma simples ideia mudou a história do futebol.
-                    </p>
-
+                <div class="coming-soon-icon">
+                    ⚽
                 </div>
 
-            </a>
+                <h3>
+                    Em breve
+                </h3>
 
+                <p>
+                    As matérias mais lidas do Fora de Linha
+                    aparecerão aqui em breve.
+                </p>
 
-            <a href="#" class="popular-item">
-
-                <div class="popular-image"></div>
-
-                <div>
-
-                    <div class="popular-number">
-                        02
-                    </div>
-
-                    <h3>
-                        O estádio mais estranho do mundo
-                    </h3>
-
-                    <p>
-                        Um estádio que possui uma história bastante
-                        diferente.
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <a href="#" class="popular-item">
-
-                <div class="popular-image"></div>
-
-                <div>
-
-                    <div class="popular-number">
-                        03
-                    </div>
-
-                    <h3>
-                        Por que o Brasil usa amarelo?
-                    </h3>
-
-                    <p>
-                        A história por trás da famosa camisa canarinho.
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <a href="#" class="popular-item">
-
-                <div class="popular-image"></div>
-
-                <div>
-
-                    <div class="popular-number">
-                        04
-                    </div>
-
-                    <h3>
-                        O jogador que marcou um gol do meio-campo
-                    </h3>
-
-                    <p>
-                        Um dos lances mais curiosos da história do futebol.
-                    </p>
-
-                </div>
-
-            </a>
+            </div>
 
         </div>
 
@@ -917,9 +809,10 @@
 
         <div class="category-grid">
 
-            <!-- Ordem alfabética -->
 
-            <a href="#" class="category-card" id="clubes">
+            <!-- CLUBES -->
+
+            <a href="#clubes" class="category-card" id="clubes">
 
                 <div class="category-icon">
                     🏟️
@@ -936,7 +829,9 @@
             </a>
 
 
-            <a href="#" class="category-card" id="jogadores">
+            <!-- JOGADORES -->
+
+            <a href="#jogadores" class="category-card" id="jogadores">
 
                 <div class="category-icon">
                     ⚽
@@ -953,7 +848,9 @@
             </a>
 
 
-            <a href="#" class="category-card" id="selecoes">
+            <!-- SELEÇÕES -->
+
+            <a href="#selecoes" class="category-card" id="selecoes">
 
                 <div class="category-icon">
                     🌎
@@ -970,7 +867,9 @@
             </a>
 
 
-            <a href="#" class="category-card" id="torcidas">
+            <!-- TORCIDAS -->
+
+            <a href="#torcidas" class="category-card" id="torcidas">
 
                 <div class="category-icon">
                     🗣️
@@ -987,7 +886,9 @@
             </a>
 
 
-            <a href="#" class="category-card" id="treinadores">
+            <!-- TREINADORES -->
+
+            <a href="#treinadores" class="category-card" id="treinadores">
 
                 <div class="category-icon">
                     🧠
@@ -1050,9 +951,12 @@
             de uma forma diferente.
         </p>
 
-        <a href="#" class="instagram">
-            📸 Instagram: @julio_balbinot
-        </a>
+        <a href="https://www.instagram.com/julio_balbinot/" 
+   class="instagram" 
+   target="_blank" 
+   rel="noopener noreferrer">
+    📸 Instagram: @julio_balbinot
+</a>
 
     </div>
 
@@ -1078,7 +982,8 @@
     </div>
 
 </footer>
-```
+
 
 </body>
+
 </html>
