@@ -88,29 +88,23 @@
 
         .category {
             display: inline-block;
-
             color: #39d353;
-
             font-size: 13px;
             font-weight: 800;
-
             text-transform: uppercase;
             letter-spacing: 1px;
-
             margin-bottom: 15px;
         }
 
         .article-title {
             font-size: 48px;
             line-height: 1.12;
-
             margin-bottom: 15px;
         }
 
         .article-subtitle {
             color: #999999;
             font-size: 18px;
-
             margin-bottom: 15px;
         }
 
@@ -131,10 +125,8 @@
         .article-image {
             width: 100%;
             height: 500px;
-
             object-fit: cover;
             display: block;
-
             border-radius: 10px;
             margin-bottom: 10px;
         }
@@ -159,10 +151,8 @@
         .article-content h2 {
             font-size: 28px;
             color: #ffffff;
-
             margin-top: 45px;
             margin-bottom: 20px;
-
             border-left: 4px solid #39d353;
             padding-left: 15px;
         }
@@ -176,11 +166,8 @@
         .highlight {
             background: #151515;
             border-left: 4px solid #39d353;
-
             padding: 22px 25px;
-
             margin: 35px 0;
-
             border-radius: 5px;
         }
 
@@ -192,16 +179,13 @@
 
         .sources {
             margin-top: 60px;
-
             border-top: 1px solid #292929;
             padding-top: 25px;
         }
 
         .sources summary {
             cursor: pointer;
-
             color: #39d353;
-
             font-weight: 700;
             font-size: 16px;
         }
@@ -229,13 +213,9 @@
 
         .back {
             display: inline-block;
-
             margin-top: 50px;
-
             color: #39d353;
-
             font-weight: 700;
-
             transition: 0.25s;
         }
 
@@ -247,17 +227,11 @@
 
         footer {
             margin-top: 80px;
-
             background: #0d0d0d;
-
             border-top: 1px solid #222222;
-
             padding: 30px 25px;
-
             text-align: center;
-
             color: #666666;
-
             font-size: 13px;
         }
 
@@ -349,13 +323,14 @@
         <!-- CONTADOR DE VISUALIZAÇÕES -->
 
         <div class="views">
-            👁️ <span id="contador-visualizacoes">
+            👁️
+            <span id="contador-visualizacoes">
                 Carregando visualizações...
             </span>
         </div>
 
 
-        <!-- IMAGEM DA MATÉRIA -->
+        <!-- IMAGEM -->
 
         <img
             src="imagens/cbf-1982.jpg"
@@ -369,6 +344,8 @@
             utilizou o escudo com o ramo de café do IBC. Foto: reprodução.
         </p>
 
+
+        <!-- CONTEÚDO -->
 
         <div class="article-content">
 
@@ -608,7 +585,7 @@
 </footer>
 
 
-<!-- FIREBASE + CONTADOR DE VISUALIZAÇÕES -->
+<!-- FIREBASE -->
 
 <script>
 
@@ -625,82 +602,122 @@
     };
 
 
-    // INICIALIZA O FIREBASE
+    // ELEMENTO DO CONTADOR
 
-    firebase.initializeApp(firebaseConfig);
-
-    const db = firebase.firestore();
-
-
-    // ID DESTA MATÉRIA NO FIRESTORE
-
-    const materiaId = "cbf-burlou-fifa-1982";
+    const contador =
+        document.getElementById("contador-visualizacoes");
 
 
-    // REFERÊNCIA DA MATÉRIA
+    // VERIFICA SE O FIREBASE CARREGOU
 
-    const materiaRef = db
-        .collection("materias")
-        .doc(materiaId);
+    if (typeof firebase === "undefined") {
 
+        console.error("Firebase não foi carregado.");
 
-    // ADICIONA UMA VISUALIZAÇÃO
+        contador.textContent =
+            "Visualizações indisponíveis";
 
-    materiaRef.set({
+    } else {
 
-        titulo: "Como a CBF burlou a FIFA com seu escudo...",
+        try {
 
-        categoria: "Seleções",
+            // INICIALIZA O FIREBASE
 
-        visualizacoes:
-            firebase.firestore.FieldValue.increment(1)
+            firebase.initializeApp(firebaseConfig);
 
-    }, {
-
-        merge: true
-
-    })
-
-    .then(() => {
-
-        // BUSCA O NÚMERO ATUAL DE VISUALIZAÇÕES
-
-        return materiaRef.get();
-
-    })
-
-    .then((doc) => {
-
-        if (doc.exists) {
-
-            const dados = doc.data();
-
-            const visualizacoes =
-                dados.visualizacoes || 0;
+            const db = firebase.firestore();
 
 
-            document.getElementById(
-                "contador-visualizacoes"
-            ).textContent =
-                visualizacoes + " visualizações";
+            // ID DA MATÉRIA
+
+            const materiaId =
+                "cbf-burlou-fifa-1982";
+
+
+            // REFERÊNCIA NO FIRESTORE
+
+            const materiaRef =
+                db.collection("materias").doc(materiaId);
+
+
+            // REGISTRA UMA VISUALIZAÇÃO
+
+            materiaRef.set({
+
+                titulo:
+                    "Como a CBF burlou a FIFA com seu escudo...",
+
+                categoria:
+                    "Seleções",
+
+                visualizacoes:
+                    firebase.firestore.FieldValue.increment(1)
+
+            }, {
+
+                merge: true
+
+            })
+
+
+            // DEPOIS PEGA O TOTAL ATUAL
+
+            .then(() => {
+
+                return materiaRef.get();
+
+            })
+
+
+            .then((doc) => {
+
+                if (doc.exists) {
+
+                    const dados =
+                        doc.data();
+
+                    const total =
+                        dados.visualizacoes || 0;
+
+                    contador.textContent =
+                        total + " visualizações";
+
+                } else {
+
+                    contador.textContent =
+                        "1 visualização";
+
+                }
+
+            })
+
+
+            .catch((erro) => {
+
+                console.error(
+                    "Erro no Firestore:",
+                    erro
+                );
+
+                contador.textContent =
+                    "Visualizações indisponíveis";
+
+            });
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao inicializar Firebase:",
+                erro
+            );
+
+            contador.textContent =
+                "Visualizações indisponíveis";
 
         }
 
-    })
-
-    .catch((erro) => {
-
-        console.error(
-            "Erro ao registrar visualização:",
-            erro
-        );
-
-        document.getElementById(
-            "contador-visualizacoes"
-        ).textContent =
-            "Visualizações indisponíveis";
-
-    });
+    }
 
 </script>
 
