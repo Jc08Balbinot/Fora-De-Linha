@@ -10,7 +10,7 @@
 
     <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
     <style>
 
@@ -103,8 +103,6 @@
             font-size: 19px;
             margin-bottom: 15px;
         }
-
-        /* VISUALIZAÇÕES */
 
         .views {
             color: #777;
@@ -325,9 +323,6 @@
         na Curuzu virou história — e até música.
     </p>
 
-
-    <!-- CONTADOR DE VISUALIZAÇÕES -->
-
     <div class="views">
         👁️ <span id="contador-visualizacoes">
             Carregando visualizações...
@@ -368,7 +363,6 @@
             história do Papão.
         </p>
 
-
         <h2>
             O Peñarol que chegou ao Brasil
         </h2>
@@ -392,12 +386,10 @@
             complicado para os donos da casa.
         </p>
 
-
         <div class="highlight">
             O Peñarol chegou à Curuzu carregando uma sequência de 15 jogos
             invicto. Pouco depois, sairia de Belém derrotado por 3 a 0.
         </div>
-
 
         <h2>
             18 de julho de 1965
@@ -419,14 +411,12 @@
 
         </div>
 
-
         <p>
             O jogo aconteceu no dia <strong>18 de julho de 1965</strong>, no
             Estádio da Curuzu. Cerca de cinco mil torcedores acompanharam
             aquele que se tornaria um dos resultados mais lembrados da história
             do Paysandu.
         </p>
-
 
         <div class="timeline">
 
@@ -447,7 +437,6 @@
 
         </div>
 
-
         <p>
             O primeiro gol saiu aos 19 minutos. Ércio recebeu de Carlinhos,
             avançou pela esquerda e finalizou da entrada da área.
@@ -462,7 +451,6 @@
             No segundo tempo, aos 23 minutos — ou 68 do jogo — Vila cruzou
             para Pau Preto, que tirou do goleiro e marcou o terceiro.
         </p>
-
 
         <h2>
             E onde entra a famosa música?
@@ -490,17 +478,14 @@
             Colino</strong>.
         </p>
 
-
         <div class="highlight">
             “Até o Peñarol veio aqui pra padecer.”
         </div>
-
 
         <p>
             A frase faz referência justamente ao histórico 3 a 0 conquistado
             pelo Paysandu naquele dia de julho de 1965.
         </p>
-
 
         <h2>
             Uma derrota que virou parte da história
@@ -524,7 +509,6 @@
             tão interessante: às vezes, um único jogo é suficiente para entrar
             para sempre na cultura de um clube.
         </p>
-
 
         <details>
 
@@ -604,11 +588,10 @@
 
 <script>
 
-    // CONFIGURAÇÃO DO FIREBASE
-
     const firebaseConfig = {
         apiKey: "AIzaSyDb86GnOJRINq7y5MEi-fwkFzZViswVCtw",
         authDomain: "fora-de-linha.firebaseapp.com",
+        databaseURL: "https://fora-de-linha-default-rtdb.firebaseio.com",
         projectId: "fora-de-linha",
         storageBucket: "fora-de-linha.firebasestorage.app",
         messagingSenderId: "843010439814",
@@ -616,83 +599,83 @@
         measurementId: "G-ZBY5GP2RF9"
     };
 
+    const contador = document.getElementById("contador-visualizacoes");
 
-    // INICIALIZA O FIREBASE
+    try {
 
-    firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
 
-    const db = firebase.firestore();
+        const db = firebase.database();
 
+        const materiaId = "paysandu-penarol-1965";
 
-    // ID DESTA MATÉRIA
+        const materiaRef = db.ref("materias/" + materiaId);
 
-    const materiaId = "paysandu-penarol-1965";
+        materiaRef.transaction(function(dados) {
 
+            if (dados === null) {
 
-    // REFERÊNCIA DO DOCUMENTO
+                return {
+                    titulo: "A relação que você não conhece entre Peñarol e Paysandu",
+                    categoria: "Clubes",
+                    visualizacoes: 1
+                };
 
-    const materiaRef = db
-        .collection("materias")
-        .doc(materiaId);
+            }
 
+            dados.visualizacoes =
+                (dados.visualizacoes || 0) + 1;
 
-    // REGISTRA UMA VISUALIZAÇÃO
+            dados.titulo =
+                "A relação que você não conhece entre Peñarol e Paysandu";
 
-    materiaRef.set({
+            dados.categoria =
+                "Clubes";
 
-        titulo: "A relação que você não conhece entre Peñarol e Paysandu",
+            return dados;
 
-        categoria: "Clubes",
+        }, function(erro, committed, snapshot) {
 
-        visualizacoes:
-            firebase.firestore.FieldValue.increment(1)
+            if (erro) {
 
-    }, {
+                console.error(
+                    "Erro ao registrar visualização:",
+                    erro
+                );
 
-        merge: true
+                contador.textContent =
+                    "Visualizações indisponíveis";
 
-    })
+                return;
+            }
 
-    .then(() => {
+            if (committed && snapshot.exists()) {
 
-        // BUSCA O NÚMERO ATUAL
+                const total =
+                    snapshot.val().visualizacoes || 0;
 
-        return materiaRef.get();
+                contador.textContent =
+                    total + (
+                        total === 1
+                            ? " visualização"
+                            : " visualizações"
+                    );
 
-    })
+            }
 
-    .then((doc) => {
+        });
 
-        if (doc.exists) {
-
-            const dados = doc.data();
-
-            const visualizacoes =
-                dados.visualizacoes || 0;
-
-
-            document.getElementById(
-                "contador-visualizacoes"
-            ).textContent =
-                visualizacoes + " visualizações";
-
-        }
-
-    })
-
-    .catch((erro) => {
+    } catch (erro) {
 
         console.error(
-            "Erro ao registrar visualização:",
+            "Erro ao inicializar Firebase:",
             erro
         );
 
-        document.getElementById(
-            "contador-visualizacoes"
-        ).textContent =
+        contador.textContent =
             "Visualizações indisponíveis";
 
-    });
+    }
 
 </script>
 
