@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -952,8 +953,6 @@
         class="featured-card"
     >
 
-        <!-- SOMENTE IMAGEM DO PAYSANDU -->
-
         <img
             src="imagens/paysandu-penarol-1965.jpg"
             alt="Time do Paysandu que venceu o Peñarol em 1965"
@@ -1214,14 +1213,12 @@
         <div class="club-article-grid">
 
 
-            <!-- PAYsANDU -->
+            <!-- PAYSANDU -->
 
             <a
                 href="paysandu-penarol-1965.html"
                 class="club-article-card"
             >
-
-                <!-- SOMENTE IMAGEM DO PAYSANDU -->
 
                 <img
                     src="imagens/paysandu-penarol-1965.jpg"
@@ -1296,15 +1293,6 @@
                 class="selection-article-card"
             >
 
-                <!--
-                    ESTA É A MESMA IMAGEM DA MATÉRIA.
-
-                    Substitua o arquivo
-                    imagens/cbf-1982.jpg
-                    pela foto que mostra claramente
-                    o ramo de café na camisa.
-                -->
-
                 <img
                     src="imagens/cbf-1982.jpg"
                     alt="Camisa da Seleção Brasileira de 1982 com o ramo de café do IBC"
@@ -1378,8 +1366,6 @@
                 href="hillsborough.html"
                 class="fan-article-card"
             >
-
-                <!-- SOMENTE IMAGEM DE HILLSBOROUGH -->
 
                 <img
                     src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tributes_at_Hillsborough_Stadium_-_geograph.org.uk_-_2664368.jpg"
@@ -1533,12 +1519,12 @@
 
 
 <!-- ==================================================
-     FIREBASE
+     FIREBASE - REALTIME DATABASE
 ================================================== -->
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 
 <script>
@@ -1552,6 +1538,8 @@
         apiKey: "AIzaSyDb86GnOJRINq7y5MEi-fwkFzZViswVCtw",
 
         authDomain: "fora-de-linha.firebaseapp.com",
+
+        databaseURL: "https://fora-de-linha-default-rtdb.firebaseio.com",
 
         projectId: "fora-de-linha",
 
@@ -1572,7 +1560,7 @@
 
     firebase.initializeApp(firebaseConfig);
 
-    const db = firebase.firestore();
+    const db = firebase.database();
 
 
     /* =========================
@@ -1588,11 +1576,6 @@
     ========================== */
 
     const materiasDoSite = {
-
-
-        /* =========================
-           PAYsANDU
-        ========================== */
 
         "paysandu-penarol-1965": {
 
@@ -1611,10 +1594,6 @@
         },
 
 
-        /* =========================
-           CBF
-        ========================== */
-
         "cbf-burlou-fifa-1982": {
 
             titulo:
@@ -1631,10 +1610,6 @@
 
         },
 
-
-        /* =========================
-           HILLSBOROUGH
-        ========================== */
 
         "hillsborough-tragedia-1989": {
 
@@ -1659,219 +1634,248 @@
        MAIS LIDAS EM TEMPO REAL
     ========================== */
 
-    db.collection("materias")
-        .onSnapshot(
+    db.ref("materias").on("value",
 
-            function(snapshot) {
+        function(snapshot) {
 
-                const materias = [];
+            const materias = [];
 
+            const dadosMaterias =
+                snapshot.val();
 
-                snapshot.forEach(function(doc) {
 
-                    const dados =
-                        doc.data();
+            /* =========================
+               BANCO VAZIO
+            ========================== */
 
-                    const id =
-                        doc.id;
-
-
-                    if (
-                        materiasDoSite[id] &&
-                        typeof dados.visualizacoes === "number"
-                    ) {
-
-                        materias.push({
-
-                            id: id,
-
-                            titulo:
-                                dados.titulo ||
-                                materiasDoSite[id].titulo,
-
-                            categoria:
-                                dados.categoria ||
-                                materiasDoSite[id].categoria,
-
-                            visualizacoes:
-                                dados.visualizacoes,
-
-                            /*
-                             * IMPORTANTE:
-                             * A imagem sempre vem
-                             * da matéria correspondente.
-                             */
-
-                            imagem:
-                                materiasDoSite[id].imagem,
-
-                            link:
-                                materiasDoSite[id].link
-
-                        });
-
-                    }
-
-                });
-
-
-                /* =========================
-                   ORDENA PELAS VISUALIZAÇÕES
-                ========================== */
-
-                materias.sort(function(a, b) {
-
-                    return b.visualizacoes -
-                           a.visualizacoes;
-
-                });
-
-
-                /* =========================
-                   SOMENTE 3
-                ========================== */
-
-                const top3 =
-                    materias.slice(0, 3);
-
-
-                /* =========================
-                   LIMPA
-                ========================== */
-
-                maisLidas.innerHTML = "";
-
-
-                /* =========================
-                   SEM RESULTADOS
-                ========================== */
-
-                if (top3.length === 0) {
-
-                    maisLidas.innerHTML = `
-
-                        <div class="popular-loading">
-
-                            ⚽ Ainda não existem visualizações
-                            suficientes para montar o ranking.
-
-                        </div>
-
-                    `;
-
-                    return;
-
-                }
-
-
-                /* =========================
-                   CRIA OS CARDS
-                ========================== */
-
-                top3.forEach(function(materia, index) {
-
-                    const card =
-                        document.createElement("a");
-
-
-                    card.href =
-                        materia.link;
-
-
-                    card.className =
-                        "popular-card";
-
-
-                    let textoVisualizacoes;
-
-
-                    if (
-                        materia.visualizacoes === 1
-                    ) {
-
-                        textoVisualizacoes =
-                            "1 visualização";
-
-                    } else {
-
-                        textoVisualizacoes =
-                            materia.visualizacoes +
-                            " visualizações";
-
-                    }
-
-
-                    card.innerHTML = `
-
-                        <img
-                            src="${materia.imagem}"
-                            alt="${materia.titulo}"
-                            class="popular-image"
-                        >
-
-                        <div class="popular-content">
-
-                            <div class="popular-position">
-
-                                ${index + 1}º MAIS LIDA
-
-                            </div>
-
-
-                            <span class="category">
-
-                                ${materia.categoria}
-
-                            </span>
-
-
-                            <h3>
-
-                                ${materia.titulo}
-
-                            </h3>
-
-
-                            <div class="popular-views">
-
-                                👁️ ${textoVisualizacoes}
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-
-                    maisLidas.appendChild(card);
-
-                });
-
-            },
-
-
-            function(error) {
-
-                console.error(
-                    "Erro ao carregar Mais Lidas:",
-                    error
-                );
-
+            if (!dadosMaterias) {
 
                 maisLidas.innerHTML = `
 
                     <div class="popular-loading">
 
-                        ⚠️ Não foi possível carregar
-                        as matérias mais lidas.
+                        ⚽ Ainda não existem visualizações
+                        suficientes para montar o ranking.
 
                     </div>
 
                 `;
 
+                return;
+
             }
 
-        );
+
+            /* =========================
+               LÊ AS MATÉRIAS
+            ========================== */
+
+            Object.keys(dadosMaterias).forEach(function(id) {
+
+                const dados =
+                    dadosMaterias[id];
+
+
+                if (
+                    materiasDoSite[id] &&
+                    dados &&
+                    typeof dados.visualizacoes === "number"
+                ) {
+
+                    materias.push({
+
+                        id: id,
+
+                        titulo:
+                            dados.titulo ||
+                            materiasDoSite[id].titulo,
+
+                        categoria:
+                            dados.categoria ||
+                            materiasDoSite[id].categoria,
+
+                        visualizacoes:
+                            dados.visualizacoes,
+
+                        /*
+                         * A imagem sempre vem
+                         * da matéria correspondente.
+                         */
+
+                        imagem:
+                            materiasDoSite[id].imagem,
+
+                        link:
+                            materiasDoSite[id].link
+
+                    });
+
+                }
+
+            });
+
+
+            /* =========================
+               ORDENA PELAS VISUALIZAÇÕES
+            ========================== */
+
+            materias.sort(function(a, b) {
+
+                return b.visualizacoes -
+                       a.visualizacoes;
+
+            });
+
+
+            /* =========================
+               SOMENTE 3 MATÉRIAS
+            ========================== */
+
+            const top3 =
+                materias.slice(0, 3);
+
+
+            /* =========================
+               LIMPA O RANKING
+            ========================== */
+
+            maisLidas.innerHTML = "";
+
+
+            /* =========================
+               SEM RESULTADOS
+            ========================== */
+
+            if (top3.length === 0) {
+
+                maisLidas.innerHTML = `
+
+                    <div class="popular-loading">
+
+                        ⚽ Ainda não existem visualizações
+                        suficientes para montar o ranking.
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            /* =========================
+               CRIA OS CARDS
+            ========================== */
+
+            top3.forEach(function(materia, index) {
+
+                const card =
+                    document.createElement("a");
+
+
+                card.href =
+                    materia.link;
+
+
+                card.className =
+                    "popular-card";
+
+
+                let textoVisualizacoes;
+
+
+                if (
+                    materia.visualizacoes === 1
+                ) {
+
+                    textoVisualizacoes =
+                        "1 visualização";
+
+                } else {
+
+                    textoVisualizacoes =
+                        materia.visualizacoes +
+                        " visualizações";
+
+                }
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${materia.imagem}"
+                        alt="${materia.titulo}"
+                        class="popular-image"
+                    >
+
+                    <div class="popular-content">
+
+                        <div class="popular-position">
+
+                            ${index + 1}º MAIS LIDA
+
+                        </div>
+
+
+                        <span class="category">
+
+                            ${materia.categoria}
+
+                        </span>
+
+
+                        <h3>
+
+                            ${materia.titulo}
+
+                        </h3>
+
+
+                        <div class="popular-views">
+
+                            👁️ ${textoVisualizacoes}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                maisLidas.appendChild(card);
+
+            });
+
+        },
+
+
+        /* =========================
+           ERRO DO REALTIME DATABASE
+        ========================== */
+
+        function(error) {
+
+            console.error(
+                "Erro ao carregar Mais Lidas:",
+                error
+            );
+
+
+            maisLidas.innerHTML = `
+
+                <div class="popular-loading">
+
+                    ⚠️ Não foi possível carregar
+                    as matérias mais lidas.
+
+                </div>
+
+            `;
+
+        }
+
+    );
 
 </script>
 
@@ -1879,3 +1883,4 @@
 </body>
 
 </html>
+```
