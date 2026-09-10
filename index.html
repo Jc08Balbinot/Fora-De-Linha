@@ -68,8 +68,6 @@
         }
 
 
-        /* LOGO */
-
         .logo {
             font-size: 28px;
             font-weight: 900;
@@ -81,8 +79,6 @@
             color: #39d353;
         }
 
-
-        /* MENU */
 
         nav {
             display: flex;
@@ -103,7 +99,9 @@
         }
 
 
-        /* MENU CURIOSIDADES */
+        /* =========================
+           DROPDOWN
+        ========================== */
 
         .dropdown {
             position: relative;
@@ -204,8 +202,6 @@
 
             color: #999999;
             font-size: 18px;
-
-            margin-bottom: 0;
         }
 
 
@@ -248,6 +244,8 @@
             min-height: 420px;
 
             object-fit: cover;
+
+            background: #222222;
         }
 
         .featured-content {
@@ -954,11 +952,12 @@
         class="featured-card"
     >
 
+        <!-- SOMENTE IMAGEM DO PAYSANDU -->
+
         <img
             src="imagens/paysandu-penarol-1965.jpg"
             alt="Time do Paysandu que venceu o Peñarol em 1965"
             class="featured-image"
-            onerror="this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Tributes_at_Hillsborough_Stadium_-_geograph.org.uk_-_2664368.jpg';"
         >
 
 
@@ -1215,16 +1214,19 @@
         <div class="club-article-grid">
 
 
+            <!-- PAYsANDU -->
+
             <a
                 href="paysandu-penarol-1965.html"
                 class="club-article-card"
             >
 
+                <!-- SOMENTE IMAGEM DO PAYSANDU -->
+
                 <img
                     src="imagens/paysandu-penarol-1965.jpg"
                     alt="Paysandu contra o Peñarol em 1965"
                     class="club-article-image"
-                    onerror="this.style.display='none';"
                 >
 
 
@@ -1287,16 +1289,26 @@
         <div class="selection-article-grid">
 
 
+            <!-- CBF / RAMO DE CAFÉ -->
+
             <a
                 href="como-cbf-burlou-fifa.html"
                 class="selection-article-card"
             >
 
+                <!--
+                    ESTA É A MESMA IMAGEM DA MATÉRIA.
+
+                    Substitua o arquivo
+                    imagens/cbf-1982.jpg
+                    pela foto que mostra claramente
+                    o ramo de café na camisa.
+                -->
+
                 <img
                     src="imagens/cbf-1982.jpg"
-                    alt="Seleção Brasileira durante a Copa do Mundo de 1982"
+                    alt="Camisa da Seleção Brasileira de 1982 com o ramo de café do IBC"
                     class="selection-article-image"
-                    onerror="this.style.display='none';"
                 >
 
 
@@ -1367,11 +1379,12 @@
                 class="fan-article-card"
             >
 
+                <!-- SOMENTE IMAGEM DE HILLSBOROUGH -->
+
                 <img
                     src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tributes_at_Hillsborough_Stadium_-_geograph.org.uk_-_2664368.jpg"
                     alt="Tributos no estádio de Hillsborough após a tragédia de 1989"
                     class="fan-article-image"
-                    onerror="this.style.display='none';"
                 >
 
 
@@ -1566,15 +1579,12 @@
        ELEMENTO MAIS LIDAS
     ========================== */
 
-    const maisLidas = document.getElementById("mais-lidas");
+    const maisLidas =
+        document.getElementById("mais-lidas");
 
 
     /* =========================
        MATÉRIAS DO SITE
-
-       TODAS AS MATÉRIAS QUE
-       PODEM APARECER NO
-       "MAIS LIDAS" FICAM AQUI.
     ========================== */
 
     const materiasDoSite = {
@@ -1646,9 +1656,7 @@
 
 
     /* =========================
-       CARREGA AS MAIS LIDAS
-
-       ATUALIZA EM TEMPO REAL
+       MAIS LIDAS EM TEMPO REAL
     ========================== */
 
     db.collection("materias")
@@ -1661,15 +1669,12 @@
 
                 snapshot.forEach(function(doc) {
 
-                    const dados = doc.data();
+                    const dados =
+                        doc.data();
 
-                    const id = doc.id;
+                    const id =
+                        doc.id;
 
-
-                    /*
-                     * Só mostra matérias que
-                     * estão cadastradas acima.
-                     */
 
                     if (
                         materiasDoSite[id] &&
@@ -1691,6 +1696,12 @@
                             visualizacoes:
                                 dados.visualizacoes,
 
+                            /*
+                             * IMPORTANTE:
+                             * A imagem sempre vem
+                             * da matéria correspondente.
+                             */
+
                             imagem:
                                 materiasDoSite[id].imagem,
 
@@ -1705,18 +1716,19 @@
 
 
                 /* =========================
-                   ORDENA POR VISUALIZAÇÕES
+                   ORDENA PELAS VISUALIZAÇÕES
                 ========================== */
 
                 materias.sort(function(a, b) {
 
-                    return b.visualizacoes - a.visualizacoes;
+                    return b.visualizacoes -
+                           a.visualizacoes;
 
                 });
 
 
                 /* =========================
-                   PEGA NO MÁXIMO 3
+                   SOMENTE 3
                 ========================== */
 
                 const top3 =
@@ -1724,14 +1736,14 @@
 
 
                 /* =========================
-                   LIMPA ÁREA
+                   LIMPA
                 ========================== */
 
                 maisLidas.innerHTML = "";
 
 
                 /* =========================
-                   SE NÃO HOUVER MATÉRIAS
+                   SEM RESULTADOS
                 ========================== */
 
                 if (top3.length === 0) {
@@ -1795,7 +1807,6 @@
                             src="${materia.imagem}"
                             alt="${materia.titulo}"
                             class="popular-image"
-                            onerror="this.style.display='none';"
                         >
 
                         <div class="popular-content">
