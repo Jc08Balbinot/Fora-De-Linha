@@ -405,6 +405,8 @@
             height: 170px;
 
             object-fit: cover;
+
+            background: #222222;
         }
 
         .popular-content {
@@ -538,14 +540,16 @@
         ========================== */
 
         .club-articles,
-        .selection-articles {
+        .selection-articles,
+        .fan-articles {
             background: #101010;
 
             border-bottom: 1px solid #202020;
         }
 
         .club-article-grid,
-        .selection-article-grid {
+        .selection-article-grid,
+        .fan-article-grid {
             display: grid;
 
             grid-template-columns: repeat(2, 1fr);
@@ -554,7 +558,8 @@
         }
 
         .club-article-card,
-        .selection-article-card {
+        .selection-article-card,
+        .fan-article-card {
             background: #181818;
 
             border: 1px solid #292929;
@@ -567,27 +572,33 @@
         }
 
         .club-article-card:hover,
-        .selection-article-card:hover {
+        .selection-article-card:hover,
+        .fan-article-card:hover {
             border-color: #39d353;
 
             transform: translateY(-4px);
         }
 
         .club-article-image,
-        .selection-article-image {
+        .selection-article-image,
+        .fan-article-image {
             width: 100%;
             height: 260px;
 
             object-fit: cover;
+
+            background: #222222;
         }
 
         .club-article-content,
-        .selection-article-content {
+        .selection-article-content,
+        .fan-article-content {
             padding: 30px;
         }
 
         .club-article-content h3,
-        .selection-article-content h3 {
+        .selection-article-content h3,
+        .fan-article-content h3 {
             font-size: 24px;
 
             line-height: 1.2;
@@ -596,7 +607,8 @@
         }
 
         .club-article-content p,
-        .selection-article-content p {
+        .selection-article-content p,
+        .fan-article-content p {
             color: #999999;
 
             margin-bottom: 22px;
@@ -764,7 +776,8 @@
             }
 
             .club-article-grid,
-            .selection-article-grid {
+            .selection-article-grid,
+            .fan-article-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -810,12 +823,14 @@
             }
 
             .club-article-content,
-            .selection-article-content {
+            .selection-article-content,
+            .fan-article-content {
                 padding: 25px;
             }
 
             .club-article-content h3,
-            .selection-article-content h3 {
+            .selection-article-content h3,
+            .fan-article-content h3 {
                 font-size: 21px;
             }
 
@@ -852,11 +867,13 @@
             <div class="dropdown">
 
                 <a href="#curiosidades">
+
                     Curiosidades
 
                     <span class="arrow">
                         ▼
                     </span>
+
                 </a>
 
 
@@ -941,6 +958,7 @@
             src="imagens/paysandu-penarol-1965.jpg"
             alt="Time do Paysandu que venceu o Peñarol em 1965"
             class="featured-image"
+            onerror="this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Tributes_at_Hillsborough_Stadium_-_geograph.org.uk_-_2664368.jpg';"
         >
 
 
@@ -1206,6 +1224,7 @@
                     src="imagens/paysandu-penarol-1965.jpg"
                     alt="Paysandu contra o Peñarol em 1965"
                     class="club-article-image"
+                    onerror="this.style.display='none';"
                 >
 
 
@@ -1277,6 +1296,7 @@
                     src="imagens/cbf-1982.jpg"
                     alt="Seleção Brasileira durante a Copa do Mundo de 1982"
                     class="selection-article-image"
+                    onerror="this.style.display='none';"
                 >
 
 
@@ -1315,17 +1335,87 @@
 
 
 <!-- =========================
+     MATÉRIAS DE TORCIDAS
+========================== -->
+
+<section
+    class="fan-articles"
+    id="torcidas"
+>
+
+    <div class="main-container">
+
+
+        <div class="section-title">
+
+            <div class="green-line"></div>
+
+            <h2>
+                Torcidas
+            </h2>
+
+        </div>
+
+
+        <div class="fan-article-grid">
+
+
+            <!-- HILLSBOROUGH -->
+
+            <a
+                href="hillsborough.html"
+                class="fan-article-card"
+            >
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tributes_at_Hillsborough_Stadium_-_geograph.org.uk_-_2664368.jpg"
+                    alt="Tributos no estádio de Hillsborough após a tragédia de 1989"
+                    class="fan-article-image"
+                    onerror="this.style.display='none';"
+                >
+
+
+                <div class="fan-article-content">
+
+                    <span class="category">
+                        Torcidas
+                    </span>
+
+
+                    <h3>
+                        Hillsborough: A Tragédia e o Contexto
+                    </h3>
+
+
+                    <p>
+                        Como uma falha de segurança matou 97 pessoas e
+                        desencadeou uma das maiores batalhas por justiça
+                        da história do futebol.
+                    </p>
+
+
+                    <span class="read-more">
+                        Ler matéria →
+                    </span>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
      ÁREAS FUTURAS
 ========================== -->
 
 <section
     id="jogadores"
-    style="display:none;"
-></section>
-
-
-<section
-    id="torcidas"
     style="display:none;"
 ></section>
 
@@ -1481,14 +1571,18 @@
 
     /* =========================
        MATÉRIAS DO SITE
-       
-       IMPORTANTE:
-       Toda matéria que estiver
-       cadastrada aqui pode aparecer
-       automaticamente no Mais Lidas.
+
+       TODAS AS MATÉRIAS QUE
+       PODEM APARECER NO
+       "MAIS LIDAS" FICAM AQUI.
     ========================== */
 
     const materiasDoSite = {
+
+
+        /* =========================
+           PAYsANDU
+        ========================== */
 
         "paysandu-penarol-1965": {
 
@@ -1507,6 +1601,10 @@
         },
 
 
+        /* =========================
+           CBF
+        ========================== */
+
         "cbf-burlou-fifa-1982": {
 
             titulo:
@@ -1521,6 +1619,27 @@
             link:
                 "como-cbf-burlou-fifa.html"
 
+        },
+
+
+        /* =========================
+           HILLSBOROUGH
+        ========================== */
+
+        "hillsborough-tragedia-1989": {
+
+            titulo:
+                "Hillsborough: A Tragédia e o Contexto",
+
+            categoria:
+                "Torcidas",
+
+            imagem:
+                "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tributes_at_Hillsborough_Stadium_-_geograph.org.uk_-_2664368.jpg",
+
+            link:
+                "hillsborough.html"
+
         }
 
     };
@@ -1528,9 +1647,8 @@
 
     /* =========================
        CARREGA AS MAIS LIDAS
-       
-       onSnapshot deixa a página
-       atualizando em tempo real.
+
+       ATUALIZA EM TEMPO REAL
     ========================== */
 
     db.collection("materias")
@@ -1547,6 +1665,11 @@
 
                     const id = doc.id;
 
+
+                    /*
+                     * Só mostra matérias que
+                     * estão cadastradas acima.
+                     */
 
                     if (
                         materiasDoSite[id] &&
@@ -1596,7 +1719,8 @@
                    PEGA NO MÁXIMO 3
                 ========================== */
 
-                const top3 = materias.slice(0, 3);
+                const top3 =
+                    materias.slice(0, 3);
 
 
                 /* =========================
@@ -1634,16 +1758,24 @@
 
                 top3.forEach(function(materia, index) {
 
-                    const card = document.createElement("a");
+                    const card =
+                        document.createElement("a");
 
-                    card.href = materia.link;
 
-                    card.className = "popular-card";
+                    card.href =
+                        materia.link;
+
+
+                    card.className =
+                        "popular-card";
 
 
                     let textoVisualizacoes;
 
-                    if (materia.visualizacoes === 1) {
+
+                    if (
+                        materia.visualizacoes === 1
+                    ) {
 
                         textoVisualizacoes =
                             "1 visualização";
@@ -1663,24 +1795,36 @@
                             src="${materia.imagem}"
                             alt="${materia.titulo}"
                             class="popular-image"
+                            onerror="this.style.display='none';"
                         >
 
                         <div class="popular-content">
 
                             <div class="popular-position">
+
                                 ${index + 1}º MAIS LIDA
+
                             </div>
 
+
                             <span class="category">
+
                                 ${materia.categoria}
+
                             </span>
 
+
                             <h3>
+
                                 ${materia.titulo}
+
                             </h3>
 
+
                             <div class="popular-views">
+
                                 👁️ ${textoVisualizacoes}
+
                             </div>
 
                         </div>
